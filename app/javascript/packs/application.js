@@ -4,10 +4,17 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "jquery"
+import "bootstrap"
+import "select2"
+import "../stylesheets/application.css"
+import "./custom.js"
+
+const images = require.context('../images', true)
+
+window.$ = window.jQuery = require("jquery");
 
 Rails.start()
-Turbolinks.start()
 ActiveStorage.start()

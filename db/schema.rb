@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_05_27_120320) do
 
-  create_table "conversations", charset: "utf8mb4", force: :cascade do |t|
+  create_table "conversations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "sender_id"
     t.bigint "recipient_id"
     t.datetime "created_at", precision: 6, null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
-  create_table "driver_ratings_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "driver_ratings_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "customer_id"
     t.bigint "driver_id"
     t.integer "star_review"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["driver_id"], name: "index_driver_ratings_users_on_driver_id"
   end
 
-  create_table "food_options", charset: "utf8mb4", force: :cascade do |t|
+  create_table "food_options", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "food_id"
     t.string "group_name"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["food_id"], name: "index_food_options_on_food_id"
   end
 
-  create_table "food_options_orders", charset: "utf8mb4", force: :cascade do |t|
+  create_table "food_options_orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "food_option_id"
     t.bigint "order_id"
     t.decimal "original_price", precision: 10
@@ -53,13 +53,13 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["order_id"], name: "index_food_options_orders_on_order_id"
   end
 
-  create_table "food_types", charset: "utf8mb4", force: :cascade do |t|
+  create_table "food_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "foods", charset: "utf8mb4", force: :cascade do |t|
+  create_table "foods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "restaurant_id"
     t.decimal "price", precision: 10
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
   end
 
-  create_table "messages", charset: "utf8mb4", force: :cascade do |t|
+  create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "sender_id"
     t.text "body"
     t.datetime "seen_at"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
-  create_table "notifications", charset: "utf8mb4", force: :cascade do |t|
+  create_table "notifications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "restaurant_id"
     t.bigint "customer_id"
     t.bigint "driver_id"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["restaurant_id"], name: "index_notifications_on_restaurant_id"
   end
 
-  create_table "orders", charset: "utf8mb4", force: :cascade do |t|
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "customer_id"
     t.bigint "driver_id"
     t.string "note_to_driver"
@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["driver_id"], name: "index_orders_on_driver_id"
   end
 
-  create_table "promos", charset: "utf8mb4", force: :cascade do |t|
+  create_table "promos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "restaurant_id"
     t.integer "discount_type"
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["restaurant_id"], name: "index_promos_on_restaurant_id"
   end
 
-  create_table "restaurant_ratings_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "restaurant_ratings_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "customer_id"
     t.bigint "restaurant_id"
     t.integer "star_review"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["restaurant_id"], name: "index_restaurant_ratings_users_on_restaurant_id"
   end
 
-  create_table "restaurants", charset: "utf8mb4", force: :cascade do |t|
+  create_table "restaurants", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "owner_id"
     t.integer "status"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["owner_id"], name: "index_restaurants_on_owner_id"
   end
 
-  create_table "restaurants_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "restaurants_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "customer_id"
     t.integer "restaurant_id"
     t.integer "is_favourited"
@@ -169,13 +169,13 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["customer_id"], name: "index_restaurants_users_on_customer_id"
   end
 
-  create_table "roles", charset: "utf8mb4", force: :cascade do |t|
+  create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "roles_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "roles_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "role_id"
     t.decimal "balance", precision: 10
@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -206,7 +206,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_120320) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "vouchers", charset: "utf8mb4", force: :cascade do |t|
+  create_table "vouchers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "name"
     t.bigint "restaurant_id"
     t.integer "discount_type"
