@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>KrapFood For Business</title>
+    <%= stylesheet_pack_tag 'business', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'business', 'data-turbolinks-track': 'reload' %>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" type="text/css">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+  <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
+    <!-- Preloader -->
+    <div id="preloader-wrap" class="loaded">
+      <div class="spinner spinner-8">
+        <div class="ms-circle1 ms-child"></div>
+        <div class="ms-circle2 ms-child"></div>
+        <div class="ms-circle3 ms-child"></div>
+        <div class="ms-circle4 ms-child"></div>
+        <div class="ms-circle5 ms-child"></div>
+        <div class="ms-circle6 ms-child"></div>
+        <div class="ms-circle7 ms-child"></div>
+        <div class="ms-circle8 ms-child"></div>
+        <div class="ms-circle9 ms-child"></div>
+        <div class="ms-circle10 ms-child"></div>
+        <div class="ms-circle11 ms-child"></div>
+        <div class="ms-circle12 ms-child"></div>
+      </div>
+    </div>
+
+    <!-- Overlays -->
+    <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
+    <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
+
+    <!-- Sidebar Navigation Left -->
+      <%= render "business/shared/sidebar_left.html.erb" %>
+
+    <!-- Sidebar Right -->
+      <%= render "business/shared/sidebar_right.html.erb" %>
+
+    <!-- Main Content -->
+    <main class="body-content">
+
+      <!-- Navigation Bar -->
+      <%= render "business/shared/navbar.html.erb" %>
+      <div class="ms-content-wrapper">
+        <%= yield %>
+      </div>
+    </main>
+
+    <!-- MODALS -->
+    <!-- Reminder Modal -->
+    <%= render "business/shared/reminder_modal.html.erb" %>
+    <!-- Notes Modal -->
+    <%= render "business/shared/notes_modal.html.erb" %>
+
+    <!-- SCRIPTS -->
+    <!-- Global Required Scripts Start -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.js" integrity="sha512-4ejaN8M2YXbJ7KVP13DaCS0fZOoNCUPukqOMumr8r32Xz1/2wRw4nCKJrNmTxstfH5Gf2oLe27YpAPiQr2OnTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Global Required Scripts End -->
+
+    <!-- Page Specific Scripts Start -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.js" integrity="sha512-jRQOiy89ZX0kVR/VpJd8PP4hPofcuYlfPU9MhPzHFIB19QAzCO7myRcO0Dgycu4iANZdnmXZ5sa/dL60y7BZgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/widgets.js"> </script>
+    <script src="assets/js/clients.js"> </script>
+    <script src="assets/js/Chart.Financial.js"> </script>
+    <script src="assets/js/d3.v3.min.js">
+    </script>
+    <script src="assets/js/topojson.v1.min.js">
+    </script>
+    <script src="assets/js/datatables.min.js">
+    </script>
+    <script src="assets/js/data-tables.js">
+    </script>
+    <!-- Page Specific Scripts Finish -->
+
+    <!-- Costic core JavaScript -->
+    <script src="assets/js/framework.js"></script><div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+  </body>
+</html>
