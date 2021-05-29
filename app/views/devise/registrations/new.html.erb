@@ -26,14 +26,20 @@
                   </div>
                   <div class="form-radio">
                     <p> Gender: </p>
-                    <%= f.label :gender, "Male", value: "m" %>
-                    <%= f.radio_button :gender, "m", class: "form-radio-item" %>
-                    <%= f.label :gender, "Female", value: "f" %>
-                    <%= f.radio_button :gender, "f", class: "form-radio-item" %>
+                    <%= f.label :gender, "Male", value: "m", class: "ms-checkbox-wrap" do %>
+                      <%= f.radio_button :gender, "m" %>
+                      <i class="ms-checkbox-check"></i>
+                    <% end %>
+                    <span>Male</span>
+                    <%= f.label :gender, "Female", value: "f", class: "ms-checkbox-wrap" do %>
+                      <%= f.radio_button :gender, "f" %>
+                      <i class="ms-checkbox-check"></i>
+                    <% end %>
+                    <span>Female</span>
                   </div>
                   <div class="form-label-group">
                     <p>DOB:</p>
-                    <%= f.date_select :date_of_birth, class: "form-field" %>
+                    <%= f.date_select :date_of_birth, class: "form-control", start_year: 1950, end_year: Date.today.year %>
                   </div>
                   <div class="form-label-group">
                     <%= f.label :email %></br>
