@@ -7,14 +7,14 @@ class User < ApplicationRecord
   has_many :roles, through: :role_users
   has_many :orders
 
-  attr_accessor :login
+  attr_writer :login
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  VALID_PHONE_NUMBER_REGEX = /\A(\+84|0)+(3[2-9]|5[6|8|9]|9\d(?!5)|8[1-9]|7[0|6-9])+([0-9]{7})\z/
-  validates :phone_number, presence: true,
-                           format: { with: VALID_PHONE_NUMBER_REGEX },
-                           uniqueness: true
+  # VALID_PHONE_NUMBER_REGEX = /\A(\+84|0)+(3[2-9]|5[6|8|9]|9\d(?!5)|8[1-9]|7[0|6-9])+([0-9]{7})\z/
+  # validates :phone_number, presence: true,
+  #                          format: { with: VALID_PHONE_NUMBER_REGEX },
+  #                          uniqueness: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -30,8 +30,8 @@ class User < ApplicationRecord
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
-    if login = conditions.delete(:phone_number)
-      where(conditions.to_h).where(["lower(phone_number) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    if login = conditions.delete(:login)
+      where(conditions.to_h).where(["phone_number = :value OR email = :value", { :value => login.downcase }]).first
     elsif conditions.has_key?(:phone_number) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
