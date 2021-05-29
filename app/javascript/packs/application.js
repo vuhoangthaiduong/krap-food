@@ -8,7 +8,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
 import "bootstrap"
-import "select2"
+// import "select2"
 import "../stylesheets/application.css"
 import "./custom.js"
 
