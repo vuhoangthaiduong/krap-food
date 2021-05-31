@@ -1,0 +1,77 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class= "d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+                <h3 class="login-heading mb-4">New Buddy!</h3>
+                <form>
+                  <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-label-group">
+                          <%= f.label :first_name %></br>
+                          <%= f.text_field :first_name, class: "form-control", placeholder: "First name", id: "first-name" %>
+                      </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-label-group">
+                          <%= f.label :last_name %></br>
+                          <%= f.text_field :last_name, class: "form-control", placeholder: "Last name", id: "last-name" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row">
+                    <div class="custom-control custom-radio mr-2">
+                      <%= f.radio_button :gender, "m", class: "custom-control-input" %>
+                      <%= f.label :gender, "Male", value: "m", class: "custom-control-label" do %>
+                        <span>Male</span>
+                      <% end %>
+                    </div>
+                    <div class="custom-control custom-radio">
+                      <%= f.radio_button :gender, "f", class: "custom-control-input" %>
+                      <%= f.label :gender, "Female", value: "f", class: "custom-control-label" do %>
+                        <span>Female</span>
+                      <% end %>
+                    </div>
+                  </div>
+
+                  <div class="form-label-group">
+                    <p>DOB:</p>
+                    <%= f.date_select :date_of_birth, class: "form-control", start_year: 1950, end_year: Date.today.year %>
+                  </div>
+                  <div class="form-label-group">
+                    <%= f.label :email %></br>
+                    <%= f.email_field :email, class: "form-control", placeholder: "Email address", id: "inputEmail", autofocus: true, autocomplete: "email" %>
+                  </div>
+                  <div class="form-label-group">
+                    <%= f.label :phone_number %></br>
+                    <%= f.text_field :phone_number, class: "form-control", placeholder: "Phone number", id: "phone-number" %>
+                  </div>
+                  <div class="form-label-group">
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, class: "form-control", placeholder: "Password", id: "inputPassword", autocomplete: "new-password" %>
+                  </div>
+                  <div class="form-label-group mb-4">
+                    <%= f.label :password_confirmation %></br>
+                    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Comfirm password", autocomplete: "new-password" %>
+                  </div>
+                  <%= f.submit "Sign up", class: "btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+                  <div class="text-center pt-3">
+                    Already have an Account? <%= link_to "Sign In", new_user_session_path, class:"font-weight-bold" %>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

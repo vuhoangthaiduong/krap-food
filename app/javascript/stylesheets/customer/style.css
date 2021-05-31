@@ -107,7 +107,7 @@ img{
     min-height: 100vh;
 }
 .bg-image {
-    /* background-image: url('../img/login-bg.png'); */
+    background-image: url("/images/login-bg.png");
     background-size: cover;
     background-position: center;
 }
