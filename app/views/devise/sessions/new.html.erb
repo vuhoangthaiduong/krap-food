@@ -1,0 +1,40 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", object: resource %>
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class= "d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+          <div class="login d-flex align-items-center py-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+                  <h3 class="login-heading mb-4">Welcome back!</h3>
+                  <form>
+                    <div class="form-label-group">
+                      <%= f.label :login, "Email address or Phone number" %><br />
+                      <%= f.text_field :login, class:"form-control", autofocus: true %>
+                    </div>
+                    <div class="form-label-group">
+                      <%= f.label :password %><br />
+                      <%= f.password_field :password, id:"inputPassword", class:"form-control", autocomplete: "current-password" %>
+                    </div>
+                    <div class="custom-control custom-checkbox mb-3">
+                      <%= f.check_box :remember_me, class: "custom-control-input" %>
+                      <%= f.label :remember_me, "Remember password", class: "custom-control-label" %>
+                      
+                    </div>
+                      <%= f.submit "Sign in", class:"btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+                    <div class="text-center pt-3">
+                      Don’t have an account? <%= link_to "Sign Up", new_user_registration_path, class:"font-weight-bold" %>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
+  <div class="container">
+    <%= link_to "KrapFood", root_url, class: "navbar-brand", style: "color: #ff3008 !important" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href= <%= root_url %>>Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+        <% if user_signed_in? %>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          My Account
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> Settings</a>
+            <%= button_to "Logout", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+          </div>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

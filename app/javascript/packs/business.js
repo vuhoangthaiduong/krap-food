@@ -8,11 +8,9 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
 import "bootstrap"
-// import "select2"
-import "../stylesheets/application.css"
-import "./custom.js"
-
-const images = require.context('../images', true)
+import "./business/settings.js"
+import "./business/framework.js"
+import "../stylesheets/business.css"
 
 window.$ = window.jQuery = require("jquery");
 

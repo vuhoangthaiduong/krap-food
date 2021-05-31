@@ -1,4 +1,5 @@
 @import "bootstrap";
-@import "./customer/style.css";
 @import "select2";
 /* @import "select2-bootstrap"; */
+@import "./business/style.css";
+
