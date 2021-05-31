@@ -1,0 +1,80 @@
+<aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left ps ps--active-y">
+  <!-- Logo -->
+  <div class="logo-sn ms-d-block-lg">
+    <%= link_to "KrapFood", business_root_url, class: "pl-0 ml-0 text-center text-uppercase" %>
+  </div>
+  <!-- Navigation -->
+  <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+    <!-- Dashboard -->
+    <li class="menu-item">
+      <a href="#" class="has-chevron active" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard"> <span><i class="fas fa-chart-line"></i>Dashboard </span>
+      </a>
+      <ul id="dashboard" class="collapse show" aria-labelledby="dashboard" data-parent="#side-nav-accordion">
+        <li> <a href="#">My Branch 1</a>
+        </li>
+        <li> <a href="#">My Branch 2</a>
+        </li>
+      </ul>
+    </li>
+    <!-- /Dashboard -->
+    <!-- product -->
+    <li class="menu-item">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#product" aria-expanded="false" aria-controls="product"> <span><i class="fa fa-archive fs-16"></i>Menus </span>
+      </a>
+      <ul id="product" class="collapse" aria-labelledby="product" data-parent="#side-nav-accordion">
+        <li> <a href="pages/product/productlist.html">Menu</a>
+        </li>
+        <li> <a href="pages/product/addproduct.html">Add Product</a>
+        </li>
+        <li> <a href="pages/product/productdetail.html">Product Detail</a>
+        </li>
+      </ul>
+    </li>
+    <!-- product end -->
+    <!-- orders -->
+    <li class="menu-item">
+      <a href="pages/orders.html"> <span><i class="fas fa-clipboard-list fs-16"></i>Orders</span>
+      </a>
+    </li>
+    <!-- orders end -->
+    <!-- restaurants -->
+    <li class="menu-item">
+      <a href="pages/restaurants.html"> <span><i class="fa fa-tasks fs-16"></i>Restaurants List</span>
+      </a>
+    </li>
+    <!-- restaurants end -->
+    <!-- Invoice -->
+    <li class="menu-item">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#invoice" aria-expanded="false" aria-controls="invoice"> <span><i class="fas fa-file-invoice fs-16"></i>Invoice </span>
+      </a>
+      <ul id="invoice" class="collapse" aria-labelledby="invoice" data-parent="#side-nav-accordion">
+        <li> <a href="pages/invoice/invoicedetail.html">Invoice Detail</a>
+        </li>
+        <li> <a href="pages/invoice/invoicelist.html">Invoice List</a>
+        </li>
+      </ul>
+    </li>
+    <!-- Invoice end -->
+    <!-- customers-->
+    <li class="menu-item">
+      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#customer" aria-expanded="false" aria-controls="customer"> <span><i class="fas fa-user-friends fs-16"></i>Customers </span>
+      </a>
+      <ul id="customer" class="collapse" aria-labelledby="customer" data-parent="#side-nav-accordion">
+        <li> <a href="pages/customer/customersreview.html">Customers Review</a>
+        </li>
+        <li> <a href="pages/customer/customersreview.html">Customers List</a>
+        </li>
+        <li> <a href="pages/customer/social.html">Social Activity</a>
+        </li>
+      </ul>
+    </li>
+    <!-- Customers  end -->
+    <!-- sales -->
+    <li class="menu-item">
+      <a href="pages/sales.html"> <span><i class="fa fa-briefcase fs-16"></i>Sales</span>
+      </a>
+    </li>
+
+    <!-- /Apps -->
+  </ul>
+<div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 710px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 434px;"></div></div></aside>
