@@ -8,7 +8,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
-                <h3 class="login-heading mb-4">New Buddy!</h3>
+                <h3 class="login-heading mb-4"><%= t "devise.registrations.new.hello" %></h3>
                 <form>
                   <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -28,30 +28,30 @@
                     <div class="custom-control custom-radio mr-2">
                       <%= f.radio_button :gender, "0", class: "custom-control-input" %>
                       <%= f.label :gender, "Male", value: "0", class: "custom-control-label" do %>
-                        <span>Male</span>
+                        <span><%= t "devise.registrations.new.male" %></span>
                       <% end %>
                     </div>
                     <div class="custom-control custom-radio mr-2">
                       <%= f.radio_button :gender, "1", class: "custom-control-input" %>
                       <%= f.label :gender, "Female", value: "1", class: "custom-control-label" do %>
-                        <span>Female</span>
+                        <span><%= t "devise.registrations.new.female" %></span>
                       <% end %>
                     </div>
                     <div class="custom-control custom-radio mr-2">
                       <%= f.radio_button :gender, "2", class: "custom-control-input" %>
                       <%= f.label :gender, "Other", value: "2", class: "custom-control-label" do %>
-                        <span>Other</span>
+                        <span><%= t "devise.registrations.new.other" %></span>
                       <% end %>
                     </div>
                     <div class="custom-control custom-radio">
                       <%= f.radio_button :gender, "3", class: "custom-control-input" %>
                       <%= f.label :gender, "Prefer not to say", value: "3", class: "custom-control-label" do %>
-                        <span>Prefer not to say</span>
+                        <span><%= t "devise.registrations.new.not_to_say" %></span>
                       <% end %>
                     </div>
                   </div>
                   <div class="form-label-group">
-                    <p>DOB:</p>
+                    <p><%= t "devise.registrations.new.dob" %></p>
                     <%= f.date_select :date_of_birth, class: "form-control", start_year: 1950, end_year: Date.today.year %>
                   </div>
                   <div class="form-label-group">
@@ -65,7 +65,7 @@
                   <div class="form-label-group">
                     <%= f.label :password %>
                     <% if @minimum_password_length %>
-                      <em>(<%= @minimum_password_length %> characters minimum)</em>
+                      <em><%= t "devise.registrations.new.note" %></em>
                     <% end %><br />
                     <%= f.password_field :password, class: "form-control", placeholder: "Password", id: "inputPassword", autocomplete: "new-password" %>
                   </div>
@@ -73,9 +73,9 @@
                     <%= f.label :password_confirmation %></br>
                     <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Comfirm password", autocomplete: "new-password" %>
                   </div>
-                  <%= f.submit "Sign up", class: "btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+                  <%= f.submit t("devise.registrations.new.sign_up"), class: "btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
                   <div class="text-center pt-3">
-                    Already have an Account? <%= link_to "Sign In", new_user_session_path, class:"font-weight-bold" %>
+                  <%= t "devise.registrations.new.mention" %> <%= link_to t("devise.registrations.new.sign_in"), new_user_session_path, class:"font-weight-bold" %>
                   </div>
                 </form>
               </div>

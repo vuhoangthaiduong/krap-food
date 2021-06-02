@@ -1,0 +1,14 @@
+vi:
+  customer:
+    shared:
+      navbar:
+        home: "Trang chủ"
+        login: "Đăng nhập"
+        my_account: Tài khoản
+        settings: Cài đặt
+        logout: Đăng xuất
+        languages: Ngôn ngữ
+  layouts:
+    application:
+      english: "Tiếng Anh"
+      vietnamese: "Tiếng Việt"
