@@ -8,10 +8,10 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
-                  <h3 class="login-heading mb-4">Welcome back!</h3>
+                  <h3 class="login-heading mb-4"><%= t("devise.sessions.new.welcome") %></h3>
                   <form>
                     <div class="form-label-group">
-                      <%= f.label :login, "Email address or Phone number" %><br />
+                      <%= f.label :login %><br />
                       <%= f.text_field :login, class:"form-control", autofocus: true %>
                     </div>
                     <div class="form-label-group">
@@ -20,12 +20,12 @@
                     </div>
                     <div class="custom-control custom-checkbox mb-3">
                       <%= f.check_box :remember_me, class: "custom-control-input" %>
-                      <%= f.label :remember_me, "Remember password", class: "custom-control-label" %>
+                      <%= f.label :remember_me, class: "custom-control-label" %>
                       
                     </div>
-                      <%= f.submit "Sign in", class:"btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+                      <%= f.submit t("devise.sessions.new.sign_in"), class:"btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
                     <div class="text-center pt-3">
-                      Don’t have an account? <%= link_to "Sign Up", new_user_registration_path, class:"font-weight-bold" %>
+                     <%= t "devise.sessions.new.mention" %><%= link_to t("devise.sessions.new.sign_up"), new_user_registration_path, class:"font-weight-bold" %>
                     </div>
                   </form>
                 </div>

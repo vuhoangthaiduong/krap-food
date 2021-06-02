@@ -2,24 +2,33 @@
   <div class="container">
     <%= link_to "KrapFood", root_url, class: "navbar-brand", style: "color: #ff3008 !important" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href= <%= root_url %>>Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href= <%= root_url %>><%= t("customer.shared.navbar.home") %><span class="sr-only">(current)</span></a>
         </li>
+        <div class="btn-group">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= t("customer.shared.navbar.languages") %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "En", {locale: "en"}, class: "dropdown-item"  %>
+            <%= link_to "Vi", {locale: "vi"}, class: "dropdown-item"  %>
+          </div>
+        </div>
         <li class="nav-item dropdown">
         <% if user_signed_in? %>
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          My Account
+          <%= t("customer.shared.navbar.my_account") %>
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
-            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> Settings</a>
-            <%= button_to "Logout", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+            <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> <%= t("customer.shared.navbar.settings") %></a>
+            <%= button_to t("customer.shared.navbar.logout"), destroy_user_session_path, class: "dropdown-item", method: :delete %>
           </div>
         <% else %>
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to t("customer.shared.navbar.login"), new_user_session_path, class: "nav-link" %>
         <% end %>
         </li>
       </ul>
