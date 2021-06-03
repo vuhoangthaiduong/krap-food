@@ -24,6 +24,12 @@
           <%= t("customer.shared.navbar.my_account") %>
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow-sm border-0">
+            <% if current_user.restaurants.exists? %>
+              <%= link_to t("customer.shared.navbar.your_restaurant"), business_root_path, class: "dropdown-item" %>
+              <%= link_to t("customer.shared.navbar.register_restaurant"), restaurant_register_path, class: "dropdown-item" %>
+            <% else %>
+              <%= link_to t("customer.shared.navbar.register_restaurant"), restaurant_register_path, class: "dropdown-item" %>
+            <% end %>
             <a class="dropdown-item" href="orders.html#orders"><i class="icofont-food-cart"></i> <%= t("customer.shared.navbar.settings") %></a>
             <%= button_to t("customer.shared.navbar.logout"), destroy_user_session_path, class: "dropdown-item", method: :delete %>
           </div>

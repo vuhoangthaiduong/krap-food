@@ -4,7 +4,7 @@
     <span class="ms-toggler-bar bg-primary"></span>
   </div>
   <div class="logo-sn logo-sm ms-d-block-sm">
-    <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index.html"><img src="assets/img/costic/costic-logo-84x41.png" alt="logo"> </a>
+    <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index.html"><%= image_pack_tag "media/images/logo.jpg" %> </a>
   </div>
   <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
     <li class="ms-nav-item ms-nav-user dropdown">
@@ -13,15 +13,15 @@
       </a>
       <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
         <li class="ms-dropdown-list">
-          <a class="media fs-14 p-2" href="#"> <span><i class="flaticon-user mr-2"></i> Profile</span>
+          <a class="media fs-14 p-2" href="#"> <span><i class="flaticon-user mr-2"></i><%= t("business.shared.navbar.dropdown.profile") %></span>
           </a>
-          <a class="media fs-14 p-2" href="#"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span>
+          <a class="media fs-14 p-2" href="#"> <span><i class="flaticon-gear mr-2"></i><%= t("business.shared.navbar.dropdown.account_settings") %></span>
           </a>
         </li>
         <li class="dropdown-divider"></li>
         <li class="dropdown-menu-footer">
           <%= link_to destroy_user_session_path, class:"media fs-14 p-2", method: :delete do %>
-            <span><i class="flaticon-shut-down mr-2"></i> Logout</span>
+            <span><i class="flaticon-shut-down mr-2"></i><%= t("business.shared.navbar.dropdown.logout") %></span>
           <% end %>
         </li>
       </ul>

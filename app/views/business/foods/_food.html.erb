@@ -1,0 +1,19 @@
+<div class="col-lg-4 col-md-6 col-sm-6">
+  <div class="ms-card">
+    <div class="ms-card-img">
+      <% image_1 = url_for(food.image_1) rescue "" %>
+      <%= image_tag image_1, style: "width: 100%; height: 15vw; object-fit: cover;" %>
+    </div>
+    <div class="ms-card-body ">
+      <div class="wrapper-new2 ">
+        <h6><%= food.name %></h6>
+        <span class="white"><%= food.price %></span>
+      </div>
+      <div class="wrapper-new1">
+        <span>Total Order: <strong class="color-red">Placeholder</strong> </span>
+        <span>Revenue: <strong class="color-red">Placeholder</strong></span>
+      </div>
+      <%= link_to t("business.views.foods.index.see_more"), business_food_path(food), class: "btn btn-primary btn-md btn-block" %>
+    </div>
+  </div>
+</div>

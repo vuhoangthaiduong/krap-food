@@ -1,4 +1,7 @@
 vi:
+  shared:
+    yes: "Có"
+    no: "Không"
   customer:
     shared:
       navbar:
@@ -8,7 +11,86 @@ vi:
         settings: Cài đặt
         logout: Đăng xuất
         languages: Ngôn ngữ
-  layouts:
-    application:
-      english: "Tiếng Anh"
-      vietnamese: "Tiếng Việt"
+        your_restaurant: Nhà hàng của bạn
+        register_restaurant: Đăng ký nhà hàng
+  business:
+    shared:
+      navbar:
+        dropdown:
+          profile: "Tài khoản"
+          account_settings: "Cài đặt tài khoản"
+          logout: "Đăng xuất"
+      sidebar:
+        dashboard: "Bảng điều khiển"
+        menu: "Thực đơn"
+        add_product: "Thêm sản phẩm"
+        orders: "Đơn hàng"
+        promos: "Khuyến mãi"
+        customers_review: "Đánh giá của khách hàng"
+      form_action:
+        add: "Tạo"
+        edit: "Sửa"
+        delete: "Xóa"
+        save_changes: "Lưu thay đổi"
+        cancel: "Hủy"
+    controllers:
+      foods_controller:
+        destroy:
+          success: "Xóa thành công"
+    views:
+      foods:
+        index:
+          home: "Trang chủ"
+          menu: "Thực đơn"
+          see_more: "Xem chi tiết"
+        show:
+          home: "Trang chủ"
+          menu: "Thực đơn"
+          product_details: "Chi tiết sản phẩm"
+          product_info: "Thông tin sản phẩm"
+          product_id: "Mã định danh sản phẩm"
+          product_name: "Tên sản phẩm"
+          availability: "Tồn kho"
+          price: "Giá"
+          product_category: "Phân loại sản phẩm"
+          promo: "Khuyến mãi"
+          product_image_1: "Hình Ảnh Sản Phẩm 1"
+          product_image_2: "Hình Ảnh Sản Phẩm 2"
+          product_image_3: "Hình Ảnh Sản Phẩm 3"
+          in_stock: "Còn hàng"
+          out_of_stock: "Hết hàng"
+          not_applied: "Chưa chọn"
+        edit:
+          home: "Trang chủ"
+          menu: "Thực đơn"
+          edit_product: "Thay đổi thông tin sản phẩm"
+          product_info: "Thông tin sản phẩm"
+          product_id: "Mã định danh sản phẩm"
+          product_name: "Tên sản phẩm"
+          availability: "Tồn kho"
+          price: "Giá"
+          select_category: "Chọn phân loại"
+          product_details: "Chi tiết sản phẩm"
+          promo: "Khuyến mãi"
+          product_image_1: "Hình Ảnh Sản Phẩm 1"
+          product_image_2: "Hình Ảnh Sản Phẩm 2"
+          product_image_3: "Hình Ảnh Sản Phẩm 3"
+          in_stock: "Còn hàng"
+          out_of_stock: "Hết hàng"
+  activerecord:
+    attributes:
+      restaurant:
+        name: Tên
+        address: Địa chỉ
+  restaurant:
+    restaurants:
+      new:
+        hello: Hợp tác cùng chúng tôi!
+        submit: Gửi
+        name: Tên
+        address: Địa chỉ
+  controllers:
+    restaurant:
+      restaurants_controller:
+        success: Đăng ký thành công!
+        danger: Đăng ký thất bại. Xin hãy thử lại!
