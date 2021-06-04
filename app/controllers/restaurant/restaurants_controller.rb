@@ -7,8 +7,8 @@ class Restaurant::RestaurantsController < ApplicationController
   def create
     @restaurant = current_user.restaurants.build(restaurant_params)
     if @restaurant.save
-      redirect_to business_dashboard_path
       flash[:success] = I18n.t("controllers.restaurant.restaurants_controller.success")
+      redirect_to business_dashboard_path
     else
       flash[:danger] = I18n.t("controllers.restaurant.restaurants_controller.danger")
       render :new
