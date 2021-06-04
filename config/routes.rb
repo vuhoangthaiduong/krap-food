@@ -8,6 +8,11 @@ Rails.application.routes.draw do
       get 'dashboard', to: 'dashboards#dashboard'
     end
     
+    namespace :restaurant do
+      get "register", to: "restaurants#new"
+      post "register", to: "restaurants#create"
+    end
+
     scope module: :customer do
       root 'static_pages#home'
     end
