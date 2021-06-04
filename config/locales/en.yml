@@ -8,7 +8,22 @@ en:
         settings: Settings
         logout: Log out
         languages: Languages
-  layouts:
-    application:
-      english: "English"
-      vietnamese: "Vietnamese"
+        your_restaurant: Your restaurant
+        register_restaurant: Register Restaurant
+  activerecord:
+    attributes:
+      restaurant:
+        name: Name
+        address: Address
+  restaurant:
+    restaurants:
+      new:
+        hello: Partner with us
+        submit: Submit
+        name: Name
+        address: Address
+  controllers:
+    restaurant:
+      restaurants_controller:
+        success: Registration success!
+        danger: Registration failed. Please try again!

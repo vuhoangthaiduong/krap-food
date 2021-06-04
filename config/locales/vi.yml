@@ -8,7 +8,22 @@ vi:
         settings: Cài đặt
         logout: Đăng xuất
         languages: Ngôn ngữ
-  layouts:
-    application:
-      english: "Tiếng Anh"
-      vietnamese: "Tiếng Việt"
+        your_restaurant: Nhà hàng của bạn
+        register_restaurant: Đăng ký nhà hàng
+  activerecord:
+    attributes:
+      restaurant:
+        name: Tên
+        address: Địa chỉ
+  restaurant:
+    restaurants:
+      new:
+        hello: Hợp tác cùng chúng tôi!
+        submit: Gửi
+        name: Tên
+        address: Địa chỉ
+  controllers:
+    restaurant:
+      restaurants_controller:
+        success: Đăng ký thành công!
+        danger: Đăng ký thất bại. Xin hãy thử lại!
