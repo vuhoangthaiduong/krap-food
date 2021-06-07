@@ -1,0 +1,136 @@
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body
+<div class="row">
+
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb pl-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Menu</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Product</li>
+      </ol>
+    </nav>
+
+      <div class="alert alert-success" role="alert">
+        <strong>Well done!</strong> You successfully read this important alert message.
+      </div>
+  </div>
+
+
+
+  <div class="col-xl-6 col-md-12">
+    <div class="ms-panel ms-panel-fh">
+      <div class="ms-panel-header">
+        <h6>Add Product Form</h6>
+      </div>
+      <div class="ms-panel-body">
+        <%= form_for [:business, @food], class: "needs-validation clearfix" do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="invalid-feedback">
+          Name
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+            <%= f.label :price %>
+            <%= f.text_field :price, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          Price
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+            <%= f.label :restaurant %>
+            <%= f.text_field :restaurant_id, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          Restaurant
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+            <%= f.label :category %>
+            <%= f.text_field :type_id, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          Catagory
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+            <%= f.label :promo %>
+            <%= f.text_field :promo_id, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          Promo
+        </div>
+          
+          <div class="col-md-12 mb-3">
+          <label for="validationCustom12">Product Image</label>
+            <div class="custom-file">
+              <%= f.file_field :image, class: "custom-file-input", id:"validatedCustomFile" %>
+              <%= f.label :image, "Upload Images", class:"custom-file-label" %>
+              <div class="invalid-feedback">Example invalid custom file feedback</div>
+            </div>
+            </div>
+
+          <div class="input-group">
+          </div>
+        </div
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-6 col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="ms-panel">
+          <div class="ms-panel-header">
+            <h6>Product </h6>
+          </div>
+        
+          <div class="ms-panel-header new">
+            <p class="medium">Status Available</p>
+            <div>
+              <label class="ms-switch">
+                <input type="checkbox">
+                <span class="ms-switch-slider round"></span>
+              </label>
+            </div>
+          </div>
+          <div class="ms-panel-header new">
+            <p class="medium">Discount Active</p>
+            <div>
+              <label class="ms-switch">
+                <input type="checkbox" checked="">
+                <span class="ms-switch-slider round"></span>
+              </label>
+            </div>
+          </div>
+          <div class="ms-panel-header new">
+            <%= f.submit "Save", class: "btn btn-secondary d-block" %>
+            <button class="btn btn-primary d-block" type="submit">Save and Add</button>
+          </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

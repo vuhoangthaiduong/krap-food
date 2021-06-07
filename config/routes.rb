@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   namespace :business do
     root   'dashboards#index'
     get    'dashboard',  to: 'dashboards#dashboard'
+    resources :foods
 
   end
-
 
 end
