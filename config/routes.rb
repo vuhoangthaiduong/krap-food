@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     namespace :restaurant do
       get "register", to: "restaurants#new"
       post "register", to: "restaurants#create"
+      get "listing", to: "restaurants#index"
     end
 
     scope module: :customer do

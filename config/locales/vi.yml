@@ -13,6 +13,14 @@ vi:
         languages: Ngôn ngữ
         your_restaurant: Nhà hàng của bạn
         register_restaurant: Đăng ký nhà hàng
+    static_pages:
+      home:
+        find_some_deal: Tìm kiếm bữa ăn ngon ở Hà Nội
+        lists_of_restaurants: Danh sách các nhà hàng, quán cà phê thịnh hành ở Hà Nội
+        location: Mời nhập địa chỉ
+        search: Tìm kiếm
+        popular_brands: Các quán ăn nổi tiếng
+        top_restaurants: Những quán ăn, quán cà phê thịnh hành ở Hà Nội
   business:
     shared:
       navbar:
@@ -102,6 +110,13 @@ vi:
         submit: Gửi
         name: Tên
         address: Địa chỉ
+      index:
+        sort_by: Sắp xếp theo
+        distance: Khoảng cách
+        no_of_offers: Số lượng ưu đãi
+        ratings: Xếp hạng
+        offers: ƯU ĐÃI
+        restaurants: nhà hàng
   controllers:
     restaurant:
       restaurants_controller:
