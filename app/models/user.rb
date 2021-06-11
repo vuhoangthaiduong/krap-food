@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :restaurants, foreign_key: "owner_id"
-  has_many :restaurant_users
-  has_many :favourite_restaurants, through: :restaurant_users
+  has_many :restaurants_users
+  has_many :favourite_restaurants, through: :restaurants_users
   has_many :restaurant_rating_users
   has_many :driver_rating_users
   has_many :role_users
@@ -33,4 +33,5 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
+
 end

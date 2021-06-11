@@ -12,6 +12,8 @@ import "select2"
 require("jquery-ui")
 import "./business/settings.js"
 import "./business/framework.js"
+import "./business/restaurant_chooser.js"
+import "./business/replace_preview_image.js"
 import "../stylesheets/business.css"
 
 window.$ = window.jQuery = require("jquery");
