@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3 class="modal-title has-icon ms-icon-round "><i class="fas fa-list"></i><%= t("business.views.food_groups.shared.new_group") %></h3>
+</div>
+
+<div class="modal-body">
+  <%= form_for [:business, @food_group] do |f| %>
+    <%= render 'business/shared/error_messages', object: @food_group %>
+    <div class="ms-form-group has-icon">
+      <%= f.label t("business.views.food_groups.shared.group_name") %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="ms-form-group has-icon">
+      <%= f.label t("business.views.food_groups.shared.group_description") %>
+      <%= f.text_area :description, row: 2, class: "form-control" %>
+    </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-light" data-dismiss="modal"><%= t("business.shared.button.cancel") %></button>
+  <%= f.submit t("business.shared.button.add"), class: "btn btn-primary shadow-none", form: "new_food_group" %>
+  <% end %>
+</div>

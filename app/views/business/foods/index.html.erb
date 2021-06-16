@@ -2,13 +2,60 @@
   <div class="col-md-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb pl-0">
-        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.views.foods.index.home") %></a></li>
-        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.foods.index.menu") %></li>
+        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.shared.breadcrumb.home") %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.foods.shared.menu") %></li>
       </ol>
     </nav>
-      <%= paginate @foods %>
-
   </div>
-  <%= render @foods %>
+  <div class="col-md-12">
+    <div class="ms-panel">
+      <div class="ms-panel-header new d-flex">
+        <div class="mr-auto p-2 align-items-center"><h6><%= t("business.views.foods.shared.menu") %></h6></div>
+        <div class="dropdown">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class = "fas fa-plus mr-2"></i> <%= t("business.shared.button.add") %>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to t("business.views.foods.shared.new_item"), new_business_food_path, class: "dropdown-item" %>
+            <%= link_to t("business.views.foods.shared.new_group"), new_business_food_group_path, { class: "dropdown-item", remote: true, 'data-toggle' => "modal", 'data-target' => '#food-group-modal-window'} %>
+          </div>
+        </div>
+      </div>
+      <% for group in @groups %>
+        <div class="ms-panel-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <div class = "d-flex justify-content-between">
+                    <div>
+                      <div><span class = "h4"><%= group.name %></span><span class = "text-secondary"> (<%= group.foods.count %> items)</span></div>
+                      <div class="text-secondary mt-1"><%= group.description %></div>
+                    </div>
+                    <div class = "d-flex">
+                      <%= link_to edit_business_food_group_path(group), { class: "ms-btn-icon-outline btn-primary mr-2", remote: true, 'data-toggle' => "modal", 'data-target' => '#food-group-modal-window'} do %>
+                        <i class = "fas fa-edit"></i>
+                      <% end %>
+                      <%= link_to business_food_group_path(group), class: "ms-btn-icon-outline btn-primary", method: :delete, :data => {:confirm => "Are you sure?" } do %>
+                        <i class = "fas fa-trash"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                </tr>
+              </thead>
+              <div class="mb-3"></div>
+              <tbody>
+                <%= render group.foods %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-  <%= paginate @foods %>
+<div id="food-group-modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>

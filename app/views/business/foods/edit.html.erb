@@ -2,9 +2,9 @@
   <div class="col-md-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb pl-0">
-        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.views.foods.edit.home") %></a></li>
-        <li class="breadcrumb-item"><a href="<%= business_foods_path %>"><%= t("business.views.foods.edit.menu") %></a></li>
-        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.foods.edit.edit_product") %></li>
+        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.shared.breadcrumb.home") %></a></li>
+        <li class="breadcrumb-item"><a href="<%= business_foods_path %>"><%= t("business.views.foods.shared.menu") %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.foods.shared.edit_product") %></li>
       </ol>
     </nav>
     <%= form_for [:business, @food], class: "needs-validation clearfix" do |f| %>
@@ -13,68 +13,59 @@
   <div class="col-xl-6 col-md-12">
     <div class="ms-panel ms-panel-fh">
       <div class="ms-panel-header">
-        <h6><%= t("business.views.foods.edit.edit_product") %></h6>
+        <h6><%= t("business.views.foods.shared.edit_product") %></h6>
       </div>
       <div class="ms-panel-body">
           <div class="form-row">
-            <div class="col-md-12 mb-3">
-              <label for="validationCustom18"><%= t("business.views.foods.edit.product_name") %></label>
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom18"><%= t("business.views.foods.shared.product_name") %></label>
               <div class="input-group">
                 <%= f.text_field :name, class: "form-control", id: "validationCustom18" %>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="validationCustom22"><%= t("business.views.foods.edit.select_category") %></label>
+              <label for="validationCustom18"><%= t("business.views.foods.shared.group") %></label>
+              <div class="input-group">
+                <%= f.select :group_id, options_from_collection_for_select(current_restaurant.food_groups, "id", "name", selected: f.object.group.id  ), {}, { class: "form-control" } %>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom22"><%= t("business.views.foods.shared.product_category") %></label>
               <div class="input-group">
                 <%= f.select :category_id, options_from_collection_for_select(FoodCategory.all, "id", "name", selected: f.object.category.id  ), {}, { class: "form-control", id: "validationCustom22" } %>
-                <div class="invalid-feedback">
-                  Please select a Catagory.
-                </div>
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="validationCustom25"><%= t("business.views.foods.edit.price") %></label>
+              <label for="validationCustom25"><%= t("business.views.foods.shared.price") %></label>
               <div class="input-group">
                 <%= f.text_field :price, class: "form-control", id: "validationCustom25" %>
-                <div class="invalid-feedback">
-                  Price
-                </div>
               </div>
             </div>
             <div class="col-md-12 mb-3">
-              <label for="validationCustom12"><%= t("business.views.foods.edit.product_details") %></label>
+              <label for="validationCustom12"><%= t("business.views.foods.shared.product_details") %></label>
               <div class="input-group">
                 <%= f.text_area :details, rows: "5", id: "validationCustom12", class: "form-control" %>
-                <div class="invalid-feedback">
-                  Please provide a message.
-                </div>
               </div>
             </div>
             <div class="col-md-12 mb-3">
-              <label for="validationCustom12"><%= t("business.views.foods.edit.product_image_1") %></label>
+              <label for="validationCustom12"><%= t("business.views.foods.shared.product_image_1") %></label>
               <div class="custom-file">
                 <%= f.file_field :image_1, accept: "image/jpeg,image/gif,image/png", class: "custom-file-input", id: "file-preview-1", data: {flag: 1} %>
-                <label class="custom-file-label" for="validatedCustomFile">Upload Images...</label>
-                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                <label class="custom-file-label" for="validatedCustomFile"><%= t("business.views.foods.shared.upload_images") %></label>
               </div>
             </div>
             <div class="col-md-12 mb-3">
-              <label for="validationCustom12"><%= t("business.views.foods.edit.product_image_2") %></label>
+              <label for="validationCustom12"><%= t("business.views.foods.shared.product_image_2") %></label>
               <div class="custom-file">
                 <%= f.file_field :image_2, accept: "image/jpeg,image/gif,image/png", class: "custom-file-input", id: "file-preview-2", data: {flag: 2} %>
-                <label class="custom-file-label" for="validatedCustomFile">Upload Images...</label>
-                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                <label class="custom-file-label" for="validatedCustomFile"><%= t("business.views.foods.shared.upload_images") %></label>
               </div>
             </div>
             <div class="col-md-12 mb-3">
-              <label for="validationCustom12"><%= t("business.views.foods.edit.product_image_3") %></label>
+              <label for="validationCustom12"><%= t("business.views.foods.shared.product_image_3") %></label>
               <div class="custom-file">
                 <%= f.file_field :image_3, accept: "image/jpeg,image/gif,image/png", class: "custom-file-input", id: "file-preview-3", data: {flag: 3} %>
-                <label class="custom-file-label" for="validatedCustomFile">Upload Images...</label>
-                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                <label class="custom-file-label" for="validatedCustomFile"><%= t("business.views.foods.shared.upload_images") %></label>
               </div>
             </div>
           </div>
@@ -112,16 +103,23 @@
             </div>
           </div>
           <div class="ms-panel-header new">
-            <p class="medium"><%= t("business.views.foods.edit.availability") %></p>
-            <div>
-              <%= f.radio_button :availability, '1', checked: true %> <%= t("shared.yes") %>
-              <%= f.radio_button :availability, '0' %> <%= t("shared.no") %>
+            <%= f.label t("business.views.foods.shared.availability") %>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary btn-sm">
+                <%= f.radio_button :availability, '1' %> <%= t("shared.yes") %>
+              </label>
+              <label class="btn btn-secondary btn-sm">
+                <%= f.radio_button :availability, '0' %> <%= t("shared.no") %>
+              </label>
             </div>
           </div>
-
+          <div class="ms-panel-header">
+            <%= f.label t("business.views.foods.shared.promo") %>
+            <%= f.select :promo_id, options_from_collection_for_select(current_restaurant.promos, "id", "name", selected: (f.object.promo.nil? ? "" : f.object.promo.id) ), {}, { class: "form-control" } %>
+          </div>
           <div class="ms-panel-header new">
-            <button class="btn btn-secondary d-block"><%= t("business.shared.form_action.cancel") %></button>
-            <%= f.submit t("business.shared.form_action.save_changes"), class: "btn btn-primary d-block" %>
+            <button class="btn btn-secondary d-block"><%= t("business.shared.button.cancel") %></button>
+            <%= f.submit t("business.shared.button.save_changes"), class: "btn btn-primary d-block" %>
           </div>
           <% end %>
         </div>

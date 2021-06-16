@@ -23,14 +23,8 @@
     <!-- /Dashboard -->
     <!-- product -->
     <li class="menu-item">
-      <a href="#" class="has-chevron" data-toggle="collapse" data-target="#product" aria-expanded="false" aria-controls="product"> <span><i class="fa fa-archive fs-16"></i><%= t("business.shared.sidebar.menu") %></span>
+      <a href="<%= business_foods_path %>"> <span><i class="fas fa-archive fs-16"></i><%= t("business.shared.sidebar.menu") %></span>
       </a>
-      <ul id="product" class="collapse" aria-labelledby="product" data-parent="#side-nav-accordion">
-        <li> <%= link_to t("business.shared.sidebar.menu"), business_foods_path() %>
-        </li>
-        <li> <%= link_to t("business.shared.sidebar.add_product"), new_business_food_path() %>
-        </li>
-      </ul>
     </li>
     <!-- product end -->
     <!-- orders -->
@@ -47,7 +41,7 @@
     <!-- Customers  end -->
     <!-- sales -->
     <li class="menu-item">
-      <a href="pages/sales.html"> <span><i class="fa fa-briefcase fs-16"></i><%= t("business.shared.sidebar.promos") %></span>
+      <a href="<%= business_promos_url %>"> <span><i class="fa fa-briefcase fs-16"></i><%= t("business.shared.sidebar.promos") %></span>
       </a>
     </li>
 

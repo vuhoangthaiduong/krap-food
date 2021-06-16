@@ -27,56 +27,68 @@ en:
         orders: "Orders"
         promos: "Promos"
         customers_review: "Customers Review"
-      form_action:
+      button:
         add: "Add"
         edit: "Edit"
         delete: "Delete"
         save_changes: "Save changes"
         cancel: "Cancel"
+        view_details: "View details"
+      breadcrumb:
+        home: "Home"
     controllers:
       foods_controller:
         destroy:
           success: "Food deleted"
     views:
+      entities:
+        foods: "Foods"
+        promos: "Promos"
       foods:
-        index:
-          home: "Home"
+        shared:
           menu: "Menu"
           see_more: "See more"
-        show:
-          home: "Home"
-          menu: "Menu"
+          new_product: "New Product"
+          edit_product: "Edit Product"
           product_details: "Product details"
           product_info: "Product Info"
           product_id: "Product ID"
           product_name: "Product Name"
+          group: "Group"
           availability: "Availability"
           price: "Price"
           product_category: "Product Category"
-          promo: "Promo"
           product_image_1: "Product Image 1"
           product_image_2: "Product Image 2"
           product_image_3: "Product Image 3"
           in_stock: "In stock"
           out_of_stock: "Out of stock"
           not_applied: "Not applied"
-        edit:
-          home: "Home"
-          menu: "Menu"
-          edit_product: "Edit Product"
-          product_info: "Product Info"
-          product_id: "Product ID"
-          product_name: "Product Name"
-          availability: "Availability"
-          price: "Price"
-          select_category: "Select Category"
-          product_details: "Details"
-          promo: "Promo"
-          product_image_1: "Product Image 1"
-          product_image_2: "Product Image 2"
-          product_image_3: "Product Image 3"
-          in_stock: "In stock"
-          out_of_stock: "Out of stock"
+          new_item: "New item"
+          new_group: "New group"
+          upload_images: "Upload Images"
+          other_infos: "Other infos"
+      promos:
+        shared:
+          new_promo: "New promo"
+          edit_promo: "Edit promo"
+          promo_name: "Promo name"
+          promo_details: "Promo details"
+          promo_info: "Promo info"
+          promo_id: "Promo ID"
+          condition_amount: "Applicable for order from"
+          discount_amount: "Discounted amount"
+          in: "In"
+          valid_from: "Valid from"
+          valid_to: "Valid to"
+          applied_items: "Applied items"
+          no_item_applied: "No item applied"
+      food_groups:
+        shared:
+          new_group: "New Group"
+          edit_group: "Edit Group"
+          group_name: "Group name"
+          group_description: "Group description"
   activerecord:
     attributes:
       restaurant:

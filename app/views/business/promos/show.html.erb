@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb pl-0">
+        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.shared.breadcrumb.home") %></a></li>
+        <li class="breadcrumb-item"><a href="<%= business_promos_path %>"><%= t("business.views.entities.promos") %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.promos.shared.promo_details") %></li>
+      </ol>
+    </nav>
+  </div>
+    <div class="col-md-12">
+  </div>
+  <div class=" col-md-6">
+    <div class="ms-panel ms-panel-fh">
+      <div class="ms-panel-body">
+        <h4 class="section-title bold"><%= t("business.views.promos.shared.promo_info") %></h4>
+        <table class="table ms-profile-information">
+          <tbody>
+            <tr>
+              <th scope="row"><%= t("business.views.promos.shared.promo_id") %></th>
+              <td><%= @promo.id %></td>
+            </tr>
+            <tr>
+              <th scope="row"><%= t("business.views.promos.shared.promo_name") %></th>
+              <td><%= @promo.name %></td>
+            </tr>
+            <tr>
+              <th scope="row"><%= t("business.views.promos.shared.condition_amount") %></th>
+              <td><%= @promo.condition_amount %></td>
+            </tr>
+            <tr>
+              <th scope="row"><%= t("business.views.promos.shared.discount_amount") %></th>
+              <td><%= @promo.discount_amount %><%= @promo.discount_type_in_text %></td>
+            </tr>
+            <tr>
+              <th scope="row"><%= t("business.views.promos.shared.valid_from") %></th>
+              <td><%= @promo.valid_from %></td>
+            </tr>
+            <tr>
+              <th scope="row"><%= t("business.views.promos.shared.valid_to") %></th>
+              <td><%= @promo.valid_to %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="new">
+          <%= link_to t("business.shared.button.edit"), edit_business_promo_path(@promo), class: "btn btn-primary" %>
+          <%= link_to t("business.shared.button.delete"), business_promo_path(@promo), class: "btn btn-secondary", method: :delete %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-12">
+    <div class="ms-panel ms-panel-fh">
+      <div class="ms-panel-header">
+        <h6><%= t("business.views.promos.shared.applied_items") %></h6>
+      </div>
+      <div class="ms-panel-body">
+        <% if @promo.applied_items.size == 0 %>
+          <ul class="list-group list-group-flush d-flex justify-content-center align-items-center">
+            <%= t("business.views.promos.shared.no_item_applied") %>
+          </ul>
+        <% else %>
+          <ul class="list-group list-group-flush">
+            <% for item in @promo.applied_items %>
+              <li class="list-group-item"><%= link_to item.name, business_food_path(item), class: "text-dark" %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

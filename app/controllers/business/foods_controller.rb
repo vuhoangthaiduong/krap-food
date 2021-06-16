@@ -3,7 +3,8 @@ class Business::FoodsController < Business::BaseController
   before_action :check_if_food_exists, only: %i[show edit update destroy]
 
   def index
-    @foods = current_restaurant.foods.page(params[:page]).per(9)
+    @foods = current_restaurant.foods.order(name: :asc).page(params[:page]).per(9)
+    @groups = current_restaurant.food_groups
   end
 
   def show
@@ -72,6 +73,7 @@ class Business::FoodsController < Business::BaseController
                                     :promo_id,
                                     :availability,
                                     :details,
+                                    :group_id,
                                     :image_1,
                                     :image_2,
                                     :image_3)

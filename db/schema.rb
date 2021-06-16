@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_172931) do
+ActiveRecord::Schema.define(version: 2021_06_11_160127) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 2021_06_03_172931) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "food_groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_food_groups_on_restaurant_id"
+  end
+
   create_table "food_options", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "food_id"
@@ -97,6 +106,8 @@ ActiveRecord::Schema.define(version: 2021_06_03_172931) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "availability"
     t.text "details"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_foods_on_group_id"
     t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
   end
 
@@ -261,9 +272,11 @@ ActiveRecord::Schema.define(version: 2021_06_03_172931) do
   add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "driver_ratings_users", "users", column: "customer_id"
   add_foreign_key "driver_ratings_users", "users", column: "driver_id"
+  add_foreign_key "food_groups", "restaurants"
   add_foreign_key "food_options", "foods"
   add_foreign_key "food_options_orders", "food_options"
   add_foreign_key "food_options_orders", "orders"
+  add_foreign_key "foods", "food_groups", column: "group_id"
   add_foreign_key "foods", "restaurants"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users", column: "sender_id"
