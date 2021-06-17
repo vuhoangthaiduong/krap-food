@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       root 'dashboards#index'
       get 'dashboard', to: 'dashboards#dashboard'
       resources :foods, path_names: { index: "menu" }
+      resources :promos
+      resources :food_groups
 
       get 'dashboards/choose_restaurant/:restaurant_id', to: 'dashboards#choose_restaurant'  
     end

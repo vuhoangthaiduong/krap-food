@@ -2,9 +2,9 @@
   <div class="col-md-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb pl-0">
-        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> Home</a></li>
-        <li class="breadcrumb-item"><a href="<%= business_foods_path %>">Menu</a></li>
-        <li class="breadcrumb-item active" aria-current="page">New Product</li>
+        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.shared.breadcrumb.home") %></a></li>
+        <li class="breadcrumb-item"><a href="<%= business_foods_path %>"><%= t("business.views.foods.shared.menu") %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.foods.shared.new_product") %></li>
       </ol>
     </nav>
     <%= form_for [:business, @food], class: "needs-validation clearfix" do |f| %>
@@ -13,30 +13,30 @@
   <div class="col-xl-6 col-md-12">
     <div class="ms-panel ms-panel-fh">
       <div class="ms-panel-header">
-        <h6>New Product Form</h6>
+        <h6><%= t("business.views.foods.shared.new_product") %></h6>
       </div>
       <div class="ms-panel-body">
           <div class="form-row">
-            <div class="col-md-12 mb-3">
-              <label for="validationCustom18">Product Name</label>
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom18"><%= t("business.views.foods.shared.product_name") %></label>
               <div class="input-group">
                 <%= f.text_field :name, class: "form-control", id: "validationCustom18" %>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="validationCustom22">Select Category</label>
+              <label for="validationCustom18"><%= t("business.views.foods.shared.group") %></label>
+              <div class="input-group">
+                <%= f.select :category_id, options_from_collection_for_select(current_restaurant.food_groups, "id", "name"), {}, { class: "form-control" } %>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom22"><%= t("business.views.foods.shared.product_category") %></label>
               <div class="input-group">
                 <%= f.select :category_id, options_from_collection_for_select(FoodCategory.all, "id", "name"), {}, { class: "form-control", id: "validationCustom22" } %>
-                <div class="invalid-feedback">
-                  Please select a Catagory.
-                </div>
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="validationCustom25">Price</label>
+              <label for="validationCustom25"><%= t("business.views.foods.shared.price") %></label>
               <div class="input-group">
                 <%= f.text_field :price, class: "form-control", id: "validationCustom25" %>
                 <div class="invalid-feedback">
@@ -45,36 +45,30 @@
               </div>
             </div>
             <div class="col-md-12 mb-3">
-              <label for="validationCustom12">Details</label>
+              <label for="validationCustom12"><%= t("business.views.foods.shared.product_details") %></label>
               <div class="input-group">
                 <%= f.text_area :details, rows: "5", id: "validationCustom12", class: "form-control" %>
-                <div class="invalid-feedback">
-                  Please provide a message.
-                </div>
               </div>
             </div>
             <div class="col-md-12 mb-3">
-              <label for="validationCustom12">Product Image 1</label>
+              <label for="validationCustom12"><%= t("business.views.foods.shared.product_image_1") %></label>
               <div class="custom-file">
                 <%= f.file_field :image_1, accept: "image/jpeg,image/gif,image/png", class: "custom-file-input", id: "file-preview-1", data: {flag: 1} %>
-                <label class="custom-file-label" for="validatedCustomFile">Upload Images...</label>
-                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                <label class="custom-file-label" for="validatedCustomFile"><%= t("business.views.foods.shared.upload_images") %></label>
               </div>
             </div>
             <div class="col-md-12 mb-3">
-              <label for="validationCustom12">Product Image 2</label>
+              <label for="validationCustom12"><%= t("business.views.foods.shared.product_image_2") %></label>
               <div class="custom-file">
                 <%= f.file_field :image_2, accept: "image/jpeg,image/gif,image/png", class: "custom-file-input", id: "file-preview-2", data: {flag: 2} %>
-                <label class="custom-file-label" for="validatedCustomFile">Upload Images...</label>
-                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                <label class="custom-file-label" for="validatedCustomFile"><%= t("business.views.foods.shared.upload_images") %></label>
               </div>
             </div>
             <div class="col-md-12 mb-3">
-              <label for="validationCustom12">Product Image 3</label>
+              <label for="validationCustom12"><%= t("business.views.foods.shared.product_image_3") %></label>
               <div class="custom-file">
                 <%= f.file_field :image_3, accept: "image/jpeg,image/gif,image/png", class: "custom-file-input", id: "file-preview-3", data: {flag: 3} %>
-                <label class="custom-file-label" for="validatedCustomFile">Upload Images...</label>
-                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                <label class="custom-file-label" for="validatedCustomFile"><%= t("business.views.foods.shared.upload_images") %></label>
               </div>
             </div>
           </div>
@@ -86,7 +80,7 @@
       <div class="col-md-12">
         <div class="ms-panel">
           <div class="ms-panel-header">
-            <h6>Product </h6>
+            <h6><%= t("business.views.foods.shared.other_infos") %></h6>
           </div>
           <div class="ms-panel-body">
             <div id="imagesSlider" class="ms-image-slider carousel slide" data-ride="carousel">
@@ -109,15 +103,19 @@
             </div>
           </div>
           <div class="ms-panel-header new">
-            <p class="medium">Available</p>
-            <div>
-              <%= f.radio_button :availability, '1', checked: true %> Yes
-              <%= f.radio_button :availability, '0' %> No
+            <p class="medium"><%= t("business.views.foods.shared.availability") %></p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary btn-sm">
+                <%= f.radio_button :availability, '1' %> <%= t("shared.yes") %>
+              </label>
+              <label class="btn btn-secondary btn-sm">
+                <%= f.radio_button :availability, '0' %> <%= t("shared.no") %>
+              </label>
             </div>
           </div>
           <div class="ms-panel-header new">
-            <%= link_to "Cancel", business_foods_path, class:"btn btn-secondary d-block"%>
-            <%= f.submit "Add", class: "btn btn-primary d-block" %>
+            <%= link_to t("business.shared.button.cancel"), business_foods_path, class:"btn btn-secondary d-block"%>
+            <%= f.submit t("business.shared.button.add"), class: "btn btn-primary d-block" %>
           </div>
           <% end %>
         </div>

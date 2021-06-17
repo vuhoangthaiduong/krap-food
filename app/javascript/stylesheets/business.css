@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "select2";
 /* @import "select2-bootstrap"; */
+@import "jquery-datetimepicker/jquery.datetimepicker";
 @import "./business/style.css";
 

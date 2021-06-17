@@ -1,0 +1,12 @@
+<tr>
+  <th scope="row"><%= get_no(index) %></th>
+  <td><%= link_to promo.name, business_promo_path(promo), class: "text-dark" %></td>
+  <td>Discount <%= promo.discount_amount %><%= promo.discount_type_in_text %> for order from <%= promo.condition_amount %>đ</td>
+  <td><%= promo.valid_from %></td>
+  <td><%= promo.valid_to %></td>
+  <td><%= promo.applied_items.size %></td>
+  <td><%= link_to business_promo_path(promo), class: "btn btn-outline-primary btn-sm m-0" do %>
+        <i class="fas fa-arrow-alt-circle-right", style = "font-size:10px"></i> <%= t("business.shared.button.view_details") %>
+      <% end %>    
+  </td>
+</tr>

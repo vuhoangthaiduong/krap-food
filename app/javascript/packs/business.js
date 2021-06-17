@@ -15,8 +15,12 @@ import "./business/framework.js"
 import "./business/restaurant_chooser.js"
 import "./business/replace_preview_image.js"
 import "../stylesheets/business.css"
+require("jquery-datetimepicker")
 
 window.$ = window.jQuery = require("jquery");
 
 Rails.start()
 ActiveStorage.start()
+$(document).ready(function() {
+  $('.datetimepicker').datetimepicker();
+});

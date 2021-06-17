@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb pl-0">
+        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.shared.breadcrumb.home") %></a></li>
+        <li class="breadcrumb-item active"><%= t("business.views.entities.promos") %></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.promos.shared.new_promo") %></li>
+      </ol>
+    </nav>
+    <%= form_for [:business, @promo], class: "needs-validation clearfix" do |f| %>
+    <%= render 'business/shared/error_messages', object: @promo %>
+  </div>
+  <div class="col-md-12">
+    <div class="ms-panel ms-panel-fh">
+      <div class="ms-panel-header">
+        <h6><%= t("business.views.promos.shared.new_promo") %></h6>
+      </div>
+      <div class="ms-panel-body">
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <label for="validationCustom18"><%= t("business.views.promos.shared.promo_name") %></label>
+              <div class="input-group">
+                <%= f.text_field :name, class: "form-control", id: "validationCustom18" %>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom25"><%= t("business.views.promos.shared.discount_amount") %></label>
+              <div class="input-group">
+                <%= f.text_field :discount_amount, autocomplete: :off, class: 'form-control' %> 
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom22"><%= t("business.views.promos.shared.in") %></label>
+              <div class="input-group">
+                <%= f.select :discount_type, [['đ', 1], ['%', 2]], {}, class: "custom-select" %>
+              </div>
+            </div>
+            <div class="col-md-12 mb-3">
+              <label for="validationCustom18"><%= t("business.views.promos.shared.condition_amount") %></label>
+              <div class="input-group">
+                <%= f.text_field :condition_amount, class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom12"><%= t("business.views.promos.shared.valid_from") %></label>
+              <div class="input-group">
+                <%= f.text_field :valid_from, autocomplete: :off, class: 'form-control datetimepicker' %> 
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationCustom12"><%= t("business.views.promos.shared.valid_to") %></label>
+              <div class="input-group">
+                <%= f.text_field :valid_to, autocomplete: :off, class: 'form-control datetimepicker' %> 
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="ms-panel-header new">
+        <%= link_to t("business.shared.button.cancel"), business_promos_path, class:"btn btn-secondary d-block" %>
+        <%= f.submit t("business.shared.button.add"), class: "btn btn-primary d-block" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

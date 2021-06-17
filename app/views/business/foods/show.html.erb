@@ -2,16 +2,16 @@
   <div class="col-md-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb pl-0">
-        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.views.foods.show.home") %></a></li>
-        <li class="breadcrumb-item"><a href="<%= business_foods_path %>"><%= t("business.views.foods.show.menu") %></a></li>
-        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.foods.show.product_details") %></li>
+        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.shared.breadcrumb.home") %></a></li>
+        <li class="breadcrumb-item"><a href="<%= business_foods_path %>"><%= t("business.views.foods.shared.menu") %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.foods.shared.product_details") %></li>
       </ol>
     </nav>
   </div>
     <div class="col-md-12">
     <div class="ms-panel">
       <div class="ms-panel-header">
-        <h6><%= t("business.views.foods.show.product_details") %></h6>
+        <h6><%= t("business.views.foods.shared.product_details") %></h6>
       </div>
       <div class="ms-panel-body">
         <div id="arrowSlider" class="ms-arrow-slider carousel slide" data-ride="carousel" data-interval="false">
@@ -19,19 +19,19 @@
             <div class="carousel-item active">
               <%= image_tag @food.image_1, class: "d-block w-100", style: "width: 100%; height: 25vw; object-fit: cover;" , alt: "First slide"%>
               <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white"><%= t("business.views.foods.show.product_image_1") %></h3>
+                <h3 class="text-white"><%= t("business.views.foods.shared.product_image_1") %></h3>
               </div>
             </div>
             <div class="carousel-item">
               <%= image_tag @food.image_2, class: "d-block w-100", style: "width: 100%; height: 25vw; object-fit: cover;", alt: "Second slide"%>
                                   <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white"><%= t("business.views.foods.show.product_image_2") %></h3>
+                <h3 class="text-white"><%= t("business.views.foods.shared.product_image_2") %></h3>
               </div>
             </div>
             <div class="carousel-item">
               <%= image_tag @food.image_3, class: "d-block w-100", style: "width: 100%; height: 25vw; object-fit: cover;", alt: "Third slide"%>
                                   <div class="carousel-caption d-none d-md-block">
-                <h3 class="text-white"><%= t("business.views.foods.show.product_image_3") %></h3>
+                <h3 class="text-white"><%= t("business.views.foods.shared.product_image_3") %></h3>
               </div>
             </div>
           </div>
@@ -50,37 +50,41 @@
   <div class=" col-md-6">
     <div class="ms-panel ms-panel-fh">
       <div class="ms-panel-body">
-        <h4 class="section-title bold"><%= t("business.views.foods.show.product_info") %></h4>
+        <h4 class="section-title bold"><%= t("business.views.foods.shared.product_info") %></h4>
         <table class="table ms-profile-information">
           <tbody>
             <tr>
-              <th scope="row"><%= t("business.views.foods.show.product_id") %></th>
+              <th scope="row"><%= t("business.views.foods.shared.product_id") %></th>
               <td><%= @food.id %></td>
             </tr>
             <tr>
-              <th scope="row"><%= t("business.views.foods.show.product_name") %></th>
+              <th scope="row"><%= t("business.views.foods.shared.product_name") %></th>
               <td><%= @food.name %></td>
             </tr>
             <tr>
-              <th scope="row"><%= t("business.views.foods.show.availability") %></th>
+              <th scope="row"><%= t("business.views.foods.shared.group") %></th>
+              <td><%= @food.group.name %></td>
+            </tr>
+            <tr>
+              <th scope="row"><%= t("business.views.foods.shared.availability") %></th>
               <% if @food.availability == 0 %>
-                <td><span class="badge badge-pill badge-danger"><%= t("business.views.foods.show.out_of_stock") %></span></td>
+                <td><span class="badge badge-pill badge-danger"><%= t("business.views.foods.shared.out_of_stock") %></span></td>
               <% else %>
-                <td><span class="badge badge-pill badge-primary"><%= t("business.views.foods.show.in_stock") %></span></td>
+                <td><span class="badge badge-pill badge-primary"><%= t("business.views.foods.shared.in_stock") %></span></td>
               <% end %> 
             </tr>
             <tr>
-              <th scope="row"><%= t("business.views.foods.show.price") %></th>
+              <th scope="row"><%= t("business.views.foods.shared.price") %></th>
               <td><%= @food.price %></td>
             </tr>
             <tr>
-              <th scope="row"><%= t("business.views.foods.show.product_category") %></th>
+              <th scope="row"><%= t("business.views.foods.shared.product_category") %></th>
               <td><%= @food.category.name %></td>
             </tr>
             <tr>
-              <th scope="row"><%= t("business.views.foods.show.promo") %></th>
+              <th scope="row"><%= t("business.views.foods.shared.promo") %></th>
               <% if @food.promo.nil? %>
-                <td><span class = "text-secondary"><%= t("business.views.foods.show.not_applied") %></span></td>
+                <td><span class = "text-secondary"><%= t("business.views.foods.shared.not_applied") %></span></td>
               <% else %>
                 <td><%= @food.promo.name %></td>
               <% end %> 
@@ -88,8 +92,8 @@
           </tbody>
         </table>
         <div class="new">
-          <%= link_to t("business.shared.form_action.edit"), edit_business_food_path(@food), class: "btn btn-primary" %>
-          <%= link_to t("business.shared.form_action.delete"), business_food_path(@food), class: "btn btn-secondary", method: :delete %>
+          <%= link_to t("business.shared.button.edit"), edit_business_food_path(@food), class: "btn btn-primary" %>
+          <%= link_to t("business.shared.button.delete"), business_food_path(@food), class: "btn btn-secondary", method: :delete %>
         </div>
       </div>
     </div>
@@ -97,7 +101,7 @@
   <div class=" col-md-6">
     <div class="ms-panel ms-panel-fh">
       <div class="ms-panel-body">
-        <h4 class="section-title bold"><%= t("business.views.foods.show.product_info") %></h4>
+        <h4 class="section-title bold"><%= t("business.views.foods.shared.product_info") %></h4>
         <p class="description"><%= @food.details %></p>
       </div>
       <div class="ms-quick-stats">

@@ -27,29 +27,34 @@ vi:
         orders: "Đơn hàng"
         promos: "Khuyến mãi"
         customers_review: "Đánh giá của khách hàng"
-      form_action:
+      button:
         add: "Tạo"
         edit: "Sửa"
         delete: "Xóa"
         save_changes: "Lưu thay đổi"
         cancel: "Hủy"
+        view_details: "Xem chi tiết"
+      breadcrumb:
+        home: "Trang chủ"
     controllers:
       foods_controller:
         destroy:
           success: "Xóa thành công"
     views:
+      entities:
+        foods: "Sản phẩm"
+        promos: "Khuyến mãi"
       foods:
-        index:
-          home: "Trang chủ"
+        shared:
           menu: "Thực đơn"
           see_more: "Xem chi tiết"
-        show:
-          home: "Trang chủ"
-          menu: "Thực đơn"
+          new_product: "Thêm sản phẩm"
+          edit_product: "Sửa thông tin sản phẩm"
           product_details: "Chi tiết sản phẩm"
           product_info: "Thông tin sản phẩm"
           product_id: "Mã định danh sản phẩm"
           product_name: "Tên sản phẩm"
+          group: "Nhóm"
           availability: "Tồn kho"
           price: "Giá"
           product_category: "Phân loại sản phẩm"
@@ -60,23 +65,31 @@ vi:
           in_stock: "Còn hàng"
           out_of_stock: "Hết hàng"
           not_applied: "Chưa chọn"
-        edit:
-          home: "Trang chủ"
-          menu: "Thực đơn"
-          edit_product: "Thay đổi thông tin sản phẩm"
-          product_info: "Thông tin sản phẩm"
-          product_id: "Mã định danh sản phẩm"
-          product_name: "Tên sản phẩm"
-          availability: "Tồn kho"
-          price: "Giá"
-          select_category: "Chọn phân loại"
-          product_details: "Chi tiết sản phẩm"
-          promo: "Khuyến mãi"
-          product_image_1: "Hình Ảnh Sản Phẩm 1"
-          product_image_2: "Hình Ảnh Sản Phẩm 2"
-          product_image_3: "Hình Ảnh Sản Phẩm 3"
-          in_stock: "Còn hàng"
-          out_of_stock: "Hết hàng"
+          new_item: "Sản phẩm mới"
+          new_group: "Nhóm mới"
+          upload_images: "Tải ảnh lên"
+          other_infos: "Các thông tin khác"
+      promos:
+        shared:         
+          new_promo: "Tạo khuyến mãi"
+          edit_promo: "Sửa thông tin khuyến mãi"
+          promo_name: "Tên khuyến mãi"
+          promo_details: "Chi tiết khuyến mãi"
+          promo_info: "Thông tin khuyến mãi"
+          promo_id: "Mã định danh khuyến mãi"
+          condition_amount: "Áp dụng cho đơn từ"
+          discount_amount: "Lượng giảm"
+          in: "Đơn vị"
+          valid_from: "Áp dụng từ"
+          valid_to: "Áp dụng đến"
+          applied_items: "Danh sách áp dụng"
+          no_item_applied: "Chưa áp dụng cho sản phẩm nào"
+      food_groups:
+        shared:
+          new_group: "Tạo nhóm"
+          edit_group: "Sửa thông tin nhóm"
+          group_name: "Tên nhóm"
+          group_description: "Mô tả"
   activerecord:
     attributes:
       restaurant:

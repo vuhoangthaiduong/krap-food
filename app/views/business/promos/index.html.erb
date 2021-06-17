@@ -1,0 +1,45 @@
+<div class="row mb-3">
+  <div class="col-md-12 d-flex justify-content-between">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb pl-0">
+        <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.shared.breadcrumb.home") %></a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.entities.promos") %></li>
+      </ol>
+    </nav>
+  </div>
+  <div class="table-responsive">
+    <div class="ms-panel ms-panel-fh">
+      <div class="ms-panel-header d-flex align-items-center">
+        <h6 class = "mr-auto"><%= t("business.views.entities.promos") %></h6>
+        <%= link_to new_business_promo_path, class: "btn btn-secondary btn-sm" do %>
+          <i class = "fas fa-plus mr-2"></i> <%= t("business.views.promos.shared.new_promo") %>
+        <% end %>
+      </div>
+      <div class="ms-panel-body">
+        <table class="table table-hover thead-primary table-light">
+          <thead>
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col"><%= t("business.views.promos.shared.promo_name") %></th>
+              <th scope="col"><%= t("business.views.promos.shared.promo_details") %></th>
+              <th scope="col"><%= t("business.views.promos.shared.valid_from") %></th>
+              <th scope="col"><%= t("business.views.promos.shared.valid_to") %></th>
+              <th scope="col"><%= t("business.views.promos.shared.applied_items") %></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% index = 0 %>
+            <% for promo in @promos %>
+              <% index += 1 %>
+              <%= render promo, index: index %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<% if !@promos.empty? %>
+  <%= paginate @promos %>
+<% end %>

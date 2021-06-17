@@ -1,19 +1,26 @@
-<div class="col-lg-4 col-md-6 col-sm-6">
-  <div class="ms-card">
-    <div class="ms-card-img">
-      <% image_1 = url_for(food.image_1) rescue "" %>
-      <%= image_tag image_1, style: "width: 100%; height: 15vw; object-fit: cover;" %>
-    </div>
-    <div class="ms-card-body ">
-      <div class="wrapper-new2 ">
-        <h6><%= food.name %></h6>
-        <span class="white"><%= food.price %></span>
+<tr>
+  <td class="ms-table-f-w d-flex flex-row">
+    <% image_1 = url_for(food.image_1) rescue "" %>
+    <%= image_tag image_1 %>
+    <div class = "ml-1">
+      <div>
+        <%= link_to food.name, business_food_path(food), class: "text-dark" %>  
       </div>
-      <div class="wrapper-new1">
-        <span>Total Order: <strong class="color-red">Placeholder</strong> </span>
-        <span>Revenue: <strong class="color-red">Placeholder</strong></span>
+      <div>
+        <span class = "text-secondary"><%= food.details %></span>
       </div>
-      <%= link_to t("business.views.foods.index.see_more"), business_food_path(food), class: "btn btn-primary btn-md btn-block" %>
-    </div>
-  </div>
-</div>
+    </div>    
+    </td>
+    <td><%= food.price %>đ</td>
+    <td><%= food.category.name %></td>
+    <% if food.availability == 0 %>
+      <td><span class="badge badge-pill badge-danger"><%= t("business.views.foods.shared.out_of_stock") %></span></td>
+    <% else %>
+      <td><span class="badge badge-pill badge-primary"><%= t("business.views.foods.shared.in_stock") %></span></td>
+    <% end %> 
+    <td>
+      <%= link_to business_food_path(food), class: "btn btn-outline-primary btn-sm m-0" do %>
+        <i class="fas fa-arrow-alt-circle-right", style = "font-size:10px"></i> <%= t("business.shared.button.view_details") %>
+      <% end %>    
+    </td>
+  </tr>
