@@ -1,5 +1,10 @@
 class Restaurant::RestaurantsController < ApplicationController
   
+  def index
+    @restaurants = Restaurant.all
+    @food_categories = FoodCategory.all
+  end
+  
   def new
     @restaurant = current_user.restaurants.build
   end

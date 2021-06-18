@@ -4,9 +4,33 @@
     <div class="row d-flex align-items-center">
       <div class="col-md-8">
         <div class="homepage-search-title">
-          <h1 class="mb-2 font-weight-normal"><span class="font-weight-bold">Find Awesome Deals</span> in Vietnam</h1>
-          <h5 class="mb-5 text-secondary font-weight-normal">Lists of top restaurants, cafes, and more in Hanoi, based on trends</h5>
+          <h1 class="mb-2 font-weight-normal"><span class="font-weight-bold"><%= t("customer.static_pages.home.find_some_deal") %></span></h1>
+          <h5 class="mb-5 text-secondary font-weight-normal"><%= t("customer.static_pages.home.lists_of_restaurants") %></h5>
         </div>
+        <div class="homepage-search-form" data-select2-id="6">
+          <form class="form-noborder" data-select2-id="5">
+            <div class="form-row">
+              <div class="col-lg-10 col-md-10 col-sm-12 form-group">
+                <input type="text" placeholder="<%= I18n.t('customer.static_pages.home.location') %>" class="form-control form-control-lg">
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-12 form-group">
+                <a href="listing.html" class="btn btn-primary btn-block btn-lg btn-gradient"><%= t("customer.static_pages.home.search") %></a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <%= render "food_categories" %>
       </div>
     </div>
   </div>
+</section>
+<section class="section pt-5 pb-5 products-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2><%= t("customer.static_pages.home.popular_brands") %></h2>
+      <p><%= t("customer.static_pages.home.top_restaurants") %></p>
+      <span class="line"></span>
+    </div>
+  </div>
+  <%= render "restaurants" %>
+</section>

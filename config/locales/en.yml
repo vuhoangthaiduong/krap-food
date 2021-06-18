@@ -13,6 +13,14 @@ en:
         languages: Languages
         your_restaurant: Your restaurant
         register_restaurant: Register Restaurant
+    static_pages:
+      home:
+        find_some_deal: Find Awesome Deals in Hanoi
+        lists_of_restaurants: Lists of top restaurants, cafes, and more in Hanoi, based on trends
+        location: Enter your delivery location
+        search: Search
+        popular_brands: Popular Brands
+        top_restaurants: Top restaurants, cafes, pubs, and bars in Hanoi, based on trends
   business:
     shared:
       navbar:
@@ -101,6 +109,13 @@ en:
         submit: Submit
         name: Name
         address: Address
+      index:
+        sort_by: Sort by
+        distance: Distance
+        no_of_offers: No Of Offers
+        ratings: Ratings
+        offers: OFFERS
+        restaurants: restaurants
   controllers:
     restaurant:
       restaurants_controller:
