@@ -1,8 +1,18 @@
 class Restaurant::RestaurantsController < ApplicationController
   
   def index
-    @restaurants = Restaurant.all
     @food_categories = FoodCategory.all
+    if params[:search].present?
+      @restaurants = Restaurant.near(params[:search], 10, units: :km)
+      @location = Geocoder.search(params[:search]).first.coordinates
+    else
+      @restaurants = Restaurant.all
+    end
+    
+    case params[:sort]
+    when 1
+      @restaurants = Restaurant.near(params[:search], 10, units: :km, order: 'distance')
+    end
   end
   
   def new
@@ -25,5 +35,4 @@ class Restaurant::RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(:owner_id, :name, :address)
   end
-
 end

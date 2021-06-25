@@ -7,17 +7,17 @@
           <h1 class="mb-2 font-weight-normal"><span class="font-weight-bold"><%= t("customer.static_pages.home.find_some_deal") %></span></h1>
           <h5 class="mb-5 text-secondary font-weight-normal"><%= t("customer.static_pages.home.lists_of_restaurants") %></h5>
         </div>
-        <div class="homepage-search-form" data-select2-id="6">
-          <form class="form-noborder" data-select2-id="5">
+        <div class="homepage-search-form" >
+          <%= form_tag restaurant_listing_path, method: :get, html:{ class:"form-noborder" } do %>
             <div class="form-row">
               <div class="col-lg-10 col-md-10 col-sm-12 form-group">
-                <input type="text" placeholder="<%= I18n.t('customer.static_pages.home.location') %>" class="form-control form-control-lg">
+                <%= text_field_tag :search, params[:search], placeholder: t('customer.static_pages.home.location'), class: "form-control form-control-lg" %>
               </div>
               <div class="col-lg-2 col-md-2 col-sm-12 form-group">
-                <a href="listing.html" class="btn btn-primary btn-block btn-lg btn-gradient"><%= t("customer.static_pages.home.search") %></a>
+                <%= submit_tag t("customer.static_pages.home.search"), name: nil, class: "btn btn-primary btn-block btn-lg btn-gradient" %>
               </div>
             </div>
-          </form>
+          <% end %> 
         </div>
         <%= render "food_categories" %>
       </div>
