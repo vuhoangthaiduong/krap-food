@@ -19,4 +19,8 @@ class Restaurant < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
   
+  def is_open?
+    return Time.zone.now.between?(open_at.to_s(:time), close_at.to_s(:time))
+  end
+
 end

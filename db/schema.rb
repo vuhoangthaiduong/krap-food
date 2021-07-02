@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_131400) do
+ActiveRecord::Schema.define(version: 2021_06_30_144442) do
 
-  create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", charset: "utf8mb4", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "conversations", charset: "utf8mb4", force: :cascade do |t|
+  create_table "conversations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "sender_id"
     t.bigint "recipient_id"
     t.datetime "created_at", precision: 6, null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
-  create_table "driver_ratings_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "driver_ratings_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "customer_id"
     t.bigint "driver_id"
     t.integer "star_review"
@@ -60,13 +60,13 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["driver_id"], name: "index_driver_ratings_users_on_driver_id"
   end
 
-  create_table "food_categories", charset: "utf8mb4", force: :cascade do |t|
+  create_table "food_categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "food_groups", charset: "utf8mb4", force: :cascade do |t|
+  create_table "food_groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.bigint "restaurant_id"
@@ -75,28 +75,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["restaurant_id"], name: "index_food_groups_on_restaurant_id"
   end
 
-  create_table "food_options", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.bigint "food_id"
-    t.string "group_name"
-    t.integer "availability"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["food_id"], name: "index_food_options_on_food_id"
-  end
-
-  create_table "food_options_orders", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "food_option_id"
-    t.bigint "order_id"
-    t.decimal "original_price", precision: 10
-    t.integer "amount"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["food_option_id"], name: "index_food_options_orders_on_food_option_id"
-    t.index ["order_id"], name: "index_food_options_orders_on_order_id"
-  end
-
-  create_table "foods", charset: "utf8mb4", force: :cascade do |t|
+  create_table "foods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "restaurant_id"
     t.decimal "price", precision: 10
@@ -111,7 +90,13 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
   end
 
-  create_table "messages", charset: "utf8mb4", force: :cascade do |t|
+  create_table "foods_orders", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "food_id", null: false
+    t.bigint "order_id", null: false
+    t.integer "quantity", null: false
+  end
+
+  create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "sender_id"
     t.text "body"
     t.datetime "seen_at"
@@ -124,7 +109,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
-  create_table "notifications", charset: "utf8mb4", force: :cascade do |t|
+  create_table "notifications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "restaurant_id"
     t.bigint "customer_id"
     t.bigint "driver_id"
@@ -139,7 +124,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["restaurant_id"], name: "index_notifications_on_restaurant_id"
   end
 
-  create_table "orders", charset: "utf8mb4", force: :cascade do |t|
+  create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "customer_id"
     t.bigint "driver_id"
     t.string "note_to_driver"
@@ -161,7 +146,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["driver_id"], name: "index_orders_on_driver_id"
   end
 
-  create_table "promos", charset: "utf8mb4", force: :cascade do |t|
+  create_table "promos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "restaurant_id"
     t.integer "discount_type"
@@ -175,7 +160,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["restaurant_id"], name: "index_promos_on_restaurant_id"
   end
 
-  create_table "restaurant_ratings_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "restaurant_ratings_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "customer_id"
     t.bigint "restaurant_id"
     t.integer "star_review"
@@ -186,7 +171,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["restaurant_id"], name: "index_restaurant_ratings_users_on_restaurant_id"
   end
 
-  create_table "restaurants", charset: "utf8mb4", force: :cascade do |t|
+  create_table "restaurants", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "owner_id"
     t.integer "status"
@@ -202,7 +187,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["owner_id"], name: "index_restaurants_on_owner_id"
   end
 
-  create_table "restaurants_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "restaurants_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "customer_id"
     t.integer "restaurant_id"
     t.integer "is_favourited"
@@ -211,13 +196,13 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["customer_id"], name: "index_restaurants_users_on_customer_id"
   end
 
-  create_table "roles", charset: "utf8mb4", force: :cascade do |t|
+  create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "roles_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "roles_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "role_id"
     t.decimal "balance", precision: 10
@@ -227,7 +212,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -253,7 +238,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "vouchers", charset: "utf8mb4", force: :cascade do |t|
+  create_table "vouchers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "name"
     t.bigint "restaurant_id"
     t.integer "discount_type"
@@ -275,9 +260,6 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
   add_foreign_key "driver_ratings_users", "users", column: "customer_id"
   add_foreign_key "driver_ratings_users", "users", column: "driver_id"
   add_foreign_key "food_groups", "restaurants"
-  add_foreign_key "food_options", "foods"
-  add_foreign_key "food_options_orders", "food_options"
-  add_foreign_key "food_options_orders", "orders"
   add_foreign_key "foods", "food_groups", column: "group_id"
   add_foreign_key "foods", "restaurants"
   add_foreign_key "messages", "conversations"

@@ -3,7 +3,8 @@
     <div class="item">
       <div class="osahan-category-item">
         <a href="#">
-          <%= image_tag food_category.image, class: "img-fluid" %>
+          <% food_category_image = url_for(food_category.image) rescue "" %>
+          <%= image_tag food_category_image, class: "img-fluid" %>
           <h6><%= food_category.name %></h6>
           <p><%= food_category.restaurants.count %></p>
         </a>

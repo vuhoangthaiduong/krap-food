@@ -11,7 +11,8 @@ import "bootstrap"
 import "select2"
 require("jquery-ui")
 import "../stylesheets/application.css"
-import "./custom.js"
+import "./customer/custom.js"
+import "./customer/order_online"
 
 const images = require.context('../images', true)
 

@@ -33,6 +33,12 @@ class Business::PromosController < Business::BaseController
     end
   end
 
+  def destroy
+    @promo.destroy
+    flash[:success] = t("business.controllers.promos_controller.destroy.success")
+    redirect_to business_promos_path
+  end
+
   private
   def promo_params
     params.require(:promo).permit(:name,

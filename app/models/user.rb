@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :driver_rating_users
   has_many :role_users
   has_many :roles, through: :role_users
-  has_many :orders
+  has_many :orders, dependent: :destroy, foreign_key: "customer_id"
 
   attr_writer :login
 

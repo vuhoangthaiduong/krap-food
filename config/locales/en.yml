@@ -48,6 +48,9 @@ en:
       foods_controller:
         destroy:
           success: "Food deleted"
+      promos_controller:
+        destroy:
+          success: "Promo deleted"
     views:
       entities:
         foods: "Foods"

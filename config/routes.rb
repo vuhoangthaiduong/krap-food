@@ -21,6 +21,9 @@ Rails.application.routes.draw do
 
     scope module: :customer do
       root 'static_pages#home'
+      resources :restaurants
+      resources :orders, except: :new
+      post 'orders/new', to: 'orders#new'
     end
   end
 
