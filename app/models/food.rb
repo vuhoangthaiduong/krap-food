@@ -3,7 +3,8 @@ class Food < ApplicationRecord
   belongs_to :promo, optional: true
   belongs_to :category, optional: true, class_name: "FoodCategory", foreign_key: "category_id"
   belongs_to :group, optional: true, class_name: "FoodGroup", foreign_key: "group_id"
-  has_many :food_options
+  has_many :foods_orders, dependent: :destroy
+  has_many :orders, through: :foods_orders
   has_one_attached :image_1
   has_one_attached :image_2
   has_one_attached :image_3

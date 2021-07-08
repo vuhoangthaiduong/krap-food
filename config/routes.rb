@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   scope "(:locale)", locale: /en|vi/ do
     devise_for :user, path: '', path_names: { sign_in: "login", sign_out: "logout", sign_up: "register" }
 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
       resources :food_groups
 
       get 'dashboards/choose_restaurant/:restaurant_id', to: 'dashboards#choose_restaurant'  
+      get 'customers_review', to: 'reviews#index'
     end
     
     namespace :restaurant do
@@ -21,6 +23,10 @@ Rails.application.routes.draw do
 
     scope module: :customer do
       root 'static_pages#home'
+      resources :restaurants
+      resources :orders, except: :new
+      post 'orders/new', to: 'orders#new'
+      resources :reviews, only: [:index, :new, :create]
     end
   end
 

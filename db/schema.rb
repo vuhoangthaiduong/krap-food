@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_131400) do
+ActiveRecord::Schema.define(version: 2021_07_07_130955) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -75,27 +75,6 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.index ["restaurant_id"], name: "index_food_groups_on_restaurant_id"
   end
 
-  create_table "food_options", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.bigint "food_id"
-    t.string "group_name"
-    t.integer "availability"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["food_id"], name: "index_food_options_on_food_id"
-  end
-
-  create_table "food_options_orders", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "food_option_id"
-    t.bigint "order_id"
-    t.decimal "original_price", precision: 10
-    t.integer "amount"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["food_option_id"], name: "index_food_options_orders_on_food_option_id"
-    t.index ["order_id"], name: "index_food_options_orders_on_order_id"
-  end
-
   create_table "foods", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.bigint "restaurant_id"
@@ -109,6 +88,12 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.bigint "group_id"
     t.index ["group_id"], name: "index_foods_on_group_id"
     t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
+  end
+
+  create_table "foods_orders", id: false, charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "food_id", null: false
+    t.bigint "order_id", null: false
+    t.integer "quantity", null: false
   end
 
   create_table "messages", charset: "utf8mb4", force: :cascade do |t|
@@ -192,8 +177,8 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.integer "status"
     t.decimal "balance", precision: 10
     t.string "address"
-    t.datetime "open_at"
-    t.datetime "close_at"
+    t.time "open_at"
+    t.time "close_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
@@ -209,6 +194,17 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_restaurants_users_on_customer_id"
+  end
+
+  create_table "reviews", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "restaurant_id"
+    t.bigint "user_id"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "rating"
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "roles", charset: "utf8mb4", force: :cascade do |t|
@@ -275,9 +271,6 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
   add_foreign_key "driver_ratings_users", "users", column: "customer_id"
   add_foreign_key "driver_ratings_users", "users", column: "driver_id"
   add_foreign_key "food_groups", "restaurants"
-  add_foreign_key "food_options", "foods"
-  add_foreign_key "food_options_orders", "food_options"
-  add_foreign_key "food_options_orders", "orders"
   add_foreign_key "foods", "food_groups", column: "group_id"
   add_foreign_key "foods", "restaurants"
   add_foreign_key "messages", "conversations"
@@ -292,6 +285,8 @@ ActiveRecord::Schema.define(version: 2021_06_14_131400) do
   add_foreign_key "restaurant_ratings_users", "users", column: "customer_id"
   add_foreign_key "restaurants", "users", column: "owner_id"
   add_foreign_key "restaurants_users", "users", column: "customer_id"
+  add_foreign_key "reviews", "restaurants"
+  add_foreign_key "reviews", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "vouchers", "restaurants"

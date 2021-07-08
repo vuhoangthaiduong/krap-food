@@ -1,0 +1,115 @@
+<div class="tab-pane fade show active" id="pills-order-online" role="tabpanel" aria-labelledby="pills-order-online-tab">
+  <form class="explore-outlets-search mb-4 shadow-sm">
+    <div class="input-group">
+      <input type="text" placeholder="Search for dishes..." class="form-control">
+      <div class="input-group-append">
+        <button type="button" class="btn btn-link">
+        <i class="icofont-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <h5 class="mb-4 mt-3 col-md-12">Best Sellers</h5>
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+        <div class="list-card-image">
+          <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+          <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
+          <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
+          <a href="#">
+          <img src="img/list/7.png" class="img-fluid item-img">
+          </a>
+        </div>
+        <div class="p-3 position-relative">
+          <div class="list-card-body">
+            <h6 class="mb-1"><a href="#" class="text-black">Bite Me Sandwiches</a></h6>
+            <p class="text-gray mb-2">North Indian • Indian</p>
+            <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">$550 </a> <span class="badge badge-success">NEW</span> <span class="float-right">
+              <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+        <div class="list-card-image">
+          <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+          <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
+          <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
+          <a href="#">
+          <img src="img/list/8.png" class="img-fluid item-img">
+          </a>
+        </div>
+        <div class="p-3 position-relative">
+          <div class="list-card-body">
+            <h6 class="mb-1"><a href="#" class="text-black">Famous Dave's Bar-B
+              </a>
+            </h6>
+            <p class="text-gray mb-2">Hamburgers • Indian</p>
+            <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">$250 </a> <span class="badge badge-primary">NEW</span> <span class="float-right">
+              <span class="count-number">
+              <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
+              <input class="count-number-input" type="text" value=1 readonly="">
+              <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
+              </span>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+        <div class="list-card-image">
+          <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+          <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
+          <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
+          <a href="#">
+          <img src="img/list/9.png" class="img-fluid item-img">
+          </a>
+        </div>
+        <div class="p-3 position-relative">
+          <div class="list-card-body">
+            <h6 class="mb-1"><a href="#" class="text-black">Bite Me Sandwiches</a></h6>
+            <p class="text-gray mb-2">North Indian • Indian</p>
+            <p class="text-gray time mb-0"><a class="btn btn-link btn-sm pl-0 text-black pr-0" href="#">$250 </a> <span class="badge badge-info">NEW</span> <span class="float-right">
+              <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="menu">
+    <% for food_group in @restaurant.food_groups do %>
+      <div class="row">
+        <h5 class="mb-4 mt-3 col-md-12"><%= food_group.name %> <small class="h6 text-black-50"><%= food_group.foods.size %> ITEMS</small></h5>
+        <div class="col-md-12">
+          <div class="bg-white rounded border shadow-sm mb-4">
+            <% for food in food_group.foods do %>
+              <div class="gold-members p-3 menu-item <%= food == food_group.foods.last ? "" : "border-bottom" %>" data-item-id= "<%= food.id %>">
+                <span class= "btn btn-outline-secondary btn-sm float-right add-item" id= "add-<%= food.id %>">ADD</span>
+                <span class="count-number float-right d-none" id= "count-<%= food.id %>" data-item-id = "<%= food.id %>">
+                  <button class="btn btn-outline-secondary btn-sm left dec"> <i class="icofont-minus"></i> </button>
+                  <input class="count-number-input" type="text" value="1" readonly="">
+                  <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
+                </span>
+                <div class="media">
+                  <%= image_tag food.image_1, class: "mr-3 rounded-pill", style: "width: 41px; height: 41px; object-fit: cover" %>
+                  <div class="media-body">
+                    <h6 class="mb-1"><%= food.name %></h6>
+                    <p class="text-gray mb-0"><%= food.price %> VND</p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

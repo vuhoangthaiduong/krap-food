@@ -13,6 +13,22 @@ vi:
         languages: Ngôn ngữ
         your_restaurant: Nhà hàng của bạn
         register_restaurant: Đăng ký nhà hàng
+    restaurants:
+      show:
+        order_online: Đặt hàng Online
+        gallery: Thư viện
+        restaurant_info: Thông tin nhà hàng
+        ratings_reviews: Đánh giá và bình luận
+        ratings: Đánh giá
+        reviews: Bình luận
+      reviews:
+        ratings_reviews: Đánh giá và bình luận
+        rated: Đánh giá %{num} trên 5
+        leave_comment: Để lại bình luận
+        rate: Đánh giá nhà hàng
+        comment: Bình luận của bạn
+        submit: Gửi bình luận
+        all_ratings_reviews: Tất cả đánh giá và bình luận
     static_pages:
       home:
         find_some_deal: Tìm kiếm bữa ăn ngon ở Hà Nội
@@ -52,6 +68,7 @@ vi:
       entities:
         foods: "Sản phẩm"
         promos: "Khuyến mãi"
+        reviews: "Đánh giá của khách hàng"
       foods:
         shared:
           menu: "Thực đơn"

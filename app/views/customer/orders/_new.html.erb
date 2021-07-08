@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <h5 class="modal-title has-icon ms-icon-round ">Confirm your order</h3>
+</div>
+
+<div class="modal-body">
+  <%= form_for @order do |f| %>
+    <%= render 'business/shared/error_messages', object: @order %>
+    <div class="mt-3 mb-3">
+      <div class="d-flex justify-content-center row">
+          <div class="col-5">
+            <div>
+              <%= image_pack_tag "media/images/no-image.png", class: "img-fluid cover" %>
+            </div>
+            <div><span class="d-block mt-2">Shipping Address</span><span class="font-weight-bold text-success"><%= current_user.address %></span></div>
+            <span class="d-block">Expected delivery date</span><span class="font-weight-bold text-success">12 March 2020</span><span class="d-block mt-3 text-black-50 fs-15">We will be sending a shipping confirmation email when the item is shipped!</span>
+          </div>
+          <div class="col-7">
+            <div class="receipt bg-white rounded">
+              <% subtotal = 0 %>
+              <% for item in @items %>
+                <div class="d-flex justify-content-between align-items-center product-details mb-2">
+                  <div class="d-flex flex-row product-name-image"><%= image_tag Food.find(item["food_id"]).image_1, class: "rounded", style: "width:50px; height:50px" %>
+                    <div class="d-flex flex-column justify-content-between ml-2">
+                      <div><span class="d-block font-weight-bold p-name"><%= Food.find(item["food_id"]).name %></span><span class="fs-12"><%= Food.find(item["food_id"]).category.name %></span></div><span class="fs-12">Qty: <%= item["amount"] %></span>
+                    </div>
+                  </div>
+                  <div class="product-price">
+                    <h5><%= subtotal += Food.find(item["food_id"]).price.to_i * item["amount"].to_i %> VND</h5>
+                  </div>
+                </div>
+              <% end %>
+              <hr>
+            </div>
+            <div class="form-group">
+              <%= f.label "Select a promo" %>
+              <%= f.select :promo_id, options_from_collection_for_select(@restaurant.promos, "id", "name"), {}, { class: "custom-select" } %>
+            </div>
+            <div class="billing">
+              <div class="d-flex justify-content-between"><span>Subtotal</span><span class="font-weight-bold"><%= subtotal %> VND</span></div>
+              <div class="d-flex justify-content-between mt-2"><span>Shipping fee</span><span class="font-weight-bold">$15</span></div>
+              <div class="d-flex justify-content-between mt-2"><span>Tax (10%)</span><span class="font-weight-bold"><%= subtotal * 0.1 %> VND</span></div>
+              <div class="d-flex justify-content-between mt-2"><span class="text-success">Discount</span><span class="font-weight-bold text-success">$25</span></div>
+              <hr>
+              <div class="d-flex justify-content-between mt-1"><span class="font-weight-bold">Total</span><span class="font-weight-bold text-success">$165</span></div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+  <%= f.submit "Order now", class: "btn btn-primary shadow-none", form: "order-modal-window" %>
+  <% end %>
+</div>

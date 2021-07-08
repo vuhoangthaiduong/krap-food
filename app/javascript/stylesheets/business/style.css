@@ -650,6 +650,7 @@ pre{
 }
 .ms-img-large{
   width: 100px;
+  margin-right: 10px;
 }
 
 /* Body Content */
@@ -7466,4 +7467,58 @@ body:not(.ms-settings-open) .ms-settings-toggle:hover{
   .ms-switch .ms-status-switch{
     left: 75%;
   }
+}
+/**
+ * Owl Carousel v2.3.4
+ * Copyright 2013-2018 David Deutsch
+ * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+ */
+
+
+ .owl-nav button i {
+  font-size: 13px !important;
+  opacity: 0.8;
+}
+.owl-theme .owl-nav button {
+  background:#fff none repeat scroll 0 0 !important;
+  border-radius: 30px;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.2);
+  color: #000;
+  display: inline-block;
+  font-size: 21px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 40px;
+}
+.owl-controls .owl-page, .owl-controls .owl-buttons div {
+  cursor: pointer;
+}
+.owl-theme .owl-nav .owl-prev {
+  margin: 0 0 0 -15px
+}
+.owl-theme .owl-nav .owl-next {
+  margin: 0 -15px 0 0;
+}
+.owl-prev {
+  left: 0;
+  position: absolute;
+  top: 42%;
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+}
+.owl-next {
+  position: absolute;
+  right: 0;
+  top: 42%;
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+}
+.owl-theme .owl-nav button i {
+  color: #000 !important;
+  font-size: 20px;
+  line-height: 40px !important;
+}
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
+ border-radius: 50%;
 }

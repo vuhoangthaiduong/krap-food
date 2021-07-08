@@ -1,0 +1,53 @@
+<div class="ms-content-wrapper">
+  <div class="row">
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb pl-0">
+          <li class="breadcrumb-item"><a href="<%= business_root_path %>"><i class="fas fa-home"></i> <%= t("business.shared.breadcrumb.home") %></a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= t("business.views.entities.reviews") %></li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div class="ms-content-wrapper">
+    <div class="row">
+      <!-- Recent Support Tickets -->
+      <div class="col-xl-12 col-md-12">
+        <div class="ms-panel ms-panel-fh">
+          <div class="ms-panel-body p-0">
+            <ul class="ms-list ms-feed ms-twitter-feed ms-recent-support-tickets">
+              <% @reviews.each do |review| %>
+                <li class="ms-list-item">
+                  <a href="#" class="media clearfix">
+                    <%= image_tag(review.user.image, class: "ms-img-round ms-img-small") if review.user.image.attached? %>
+                    <div class="media-body">
+                      <div class="customer-meta">
+                        <div class="new">
+                          <h5 class="ms-feed-user mb-0">
+                            <%= review.user.first_name %> <%= review.user.last_name %>
+                          </h5>
+                        </div>
+                        <ul class="ms-star-rating rating-fill rating-circle ratings-new">
+                          <% if review.rating %>
+                            <% review.rating.times do %>
+                              <li class="ms-rating-item rated"> <i class="material-icons">star</i>
+                              </li>
+                            <% end %>
+                          <% end %>
+                        </ul>
+                      </div>
+                      <span class="my-2 d-block">
+                        <i class="material-icons">date_range</i> <%= time_ago_in_words(review.created_at) %>
+                      </span>
+                      <p class="d-block"><%= review.content %></p>
+                    </div>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,6 +10,7 @@ class Restaurant < ApplicationRecord
   has_many :vouchers
   has_many :restaurant_rating_users
   has_many :notifications
+  has_many :reviews
 
   validates :name, presence: true
   validates :address, presence: true
@@ -19,4 +20,8 @@ class Restaurant < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
   
+  def is_open?
+    return Time.zone.now.between?(open_at.to_s(:time), close_at.to_s(:time))
+  end
+
 end

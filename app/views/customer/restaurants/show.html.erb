@@ -1,0 +1,124 @@
+<section class="restaurant-detailed-banner">
+  <div class="text-center">
+    <%= image_tag @restaurant.image, class: "img-fluid cover" rescue image_pack_tag "media/images/no-image.png" %>
+  </div>
+  <div class="restaurant-detailed-header">
+    <div class="container">
+      <div class="row d-flex align-items-end">
+        <div class="col-md-8">
+          <div class="restaurant-detailed-header-left">
+            <h2 class="text-white"><%= @restaurant.name %></h2>
+            <p class="text-white mb-1"><i class="icofont-location-pin"></i> <%= @restaurant.address %> <%= get_status_badge(@restaurant) %></p>
+            <p class="text-white mb-0"><i class="icofont-food-cart"></i> <%= @dealing_categories.map { |category| category.name }.join(', ') %></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="restaurant-detailed-header-right text-right">
+            <button class="btn btn-success" type="button"><i class="icofont-clock-time"></i> 25–35 min
+            </button>
+            <h6 class="text-white mb-0 restaurant-detailed-ratings">
+              <span class="generator-bg rounded text-white">
+                <i class="icofont-star"></i><%= (@restaurant_ratings.sum(0.0)/@restaurant_ratings.size).round(1) %>
+              </span> <%= @restaurant_ratings.size %> <%= t("customer.restaurants.show.ratings") %><i class="ml-3 icofont-speech-comments"></i> <%= @restaurant_reviews.size %> <%= t("customer.restaurants.show.reviews") %>
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="offer-dedicated-nav bg-white border-top-0 shadow-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <span class="restaurant-detailed-action-btn float-right">
+        <button class="btn btn-light btn-sm border-light-btn" type="button"><i class="icofont-heart text-danger"></i> Mark as Favourite</button>
+        </span>
+        <ul class="nav" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-order-online-tab" data-toggle="pill" href="#pills-order-online" role="tab" aria-controls="pills-order-online" aria-selected="true"><%= t("customer.restaurants.show.order_online") %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-gallery-tab" data-toggle="pill" href="#pills-gallery" role="tab" aria-controls="pills-gallery" aria-selected="false"><%= t("customer.restaurants.show.gallery") %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-restaurant-info-tab" data-toggle="pill" href="#pills-restaurant-info" role="tab" aria-controls="pills-restaurant-info" aria-selected="false"><%= t("customer.restaurants.show.restaurant_info") %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false"><%= t("customer.restaurants.show.ratings_reviews") %></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="offer-dedicated-body-left">
+          <div class="tab-content" id="pills-tabContent">
+            <%= render partial: "order_online.html.erb" %>
+            <%= render partial: "gallery.html.erb" %>
+            <%= render partial: "restaurant_info.html.erb" %>
+            <%= render partial: "reviews.html.erb" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="pb-2">
+          <% for promo in @restaurant.promos do %>
+            <div class="bg-white rounded shadow-sm text-white mb-4 p-4 clearfix restaurant-detailed-earn-pts card-icon-overlap">
+              <%= image_pack_tag "media/images/earn-score-icon.png", class: "img-fluid float-left mr-3" %>
+              <h6 class="pt-0 text-primary mb-1 font-weight-bold">OFFER</h6>
+              <p class="mb-0">Discount <%= promo.discount_amount %><%= promo.discount_type_in_text %> for order from <%= promo.condition_amount %> VND</p>
+              <div class="icon-overlap">
+                <i class="icofont-sale-discount"></i>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
+          <h5 class="mb-1 text-white">Your Order</h5>
+          <p class="mb-4 text-white" id = "number-of-cart-items">0 ITEMS</p>
+          <div id = "cart-is-empty" class = "bg-white rounded shadow-sm mb-2 text-primary h4 vh-25 d-flex flex-column justify-content-around align-items-center">
+            <%= image_pack_tag "media/images/empty-cart.png", class: "d-block w-50 m-3" %>
+            <span class = "mb-3 text-muted" style="font-size: 15px">Cart is empty</span>
+          </div>
+          <div class="bg-white rounded shadow-sm mb-2 d-none" id="cart-items">
+          </div>
+          <div class="mb-2 bg-white rounded p-2 clearfix d-none" id="payment">
+            <%= image_pack_tag "media/images/wallet-icon.png", class: "img-fluid float-left" %>
+            <h6 class="font-weight-bold text-right mb-2">Subtotal : <span class="text-danger" id="subtotal"></span> VND</h6>
+            <p class="seven-color mb-1 text-right">Extra charges may apply</p>
+          </div>
+          <%= link_to "Checkout", "#", id: "checkout-button", class: "btn btn-success btn-block btn-lg disabled checkout-button", data: { url: orders_new_path, toggle: "modal", target: '#order-modal-window' } %>
+        </div>
+        <div id="cart-item-hidden-fields">
+          <%= hidden_field_tag "cart-items-hash" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<template id = "cart-item-template">
+  <div class="gold-members p-2 border-bottom cart-item">
+    <p class="text-gray mb-0 float-right ml-2 item-price"></p>
+    <span class="count-number float-right">
+    <button class="btn btn-outline-secondary  btn-sm left dec"> <i class="icofont-minus"></i> </button>
+    <input class="count-number-input" type="text" value="1" readonly="">
+    <button class="btn btn-outline-secondary btn-sm right inc"> <i class="icofont-plus"></i> </button>
+    </span>
+    <div class="media">
+      <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>
+      <div class="media-body">
+        <p class="mt-1 mb-0 text-black item-name"></p>
+      </div>
+    </div>
+  </div>
+</template>
+<div id="order-modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>

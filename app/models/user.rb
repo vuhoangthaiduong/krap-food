@@ -6,16 +6,18 @@ class User < ApplicationRecord
   has_many :driver_rating_users
   has_many :role_users
   has_many :roles, through: :role_users
-  has_many :orders
+  has_many :reviews
+  has_many :orders, dependent: :destroy, foreign_key: "customer_id"
 
+  has_one_attached :image
   attr_writer :login
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  VALID_PHONE_NUMBER_REGEX = /\A(\+84|0)+(3[2-9]|5[6|8|9]|9\d(?!5)|8[1-9]|7[0|6-9])+([0-9]{7})\z/
-  validates :phone_number, presence: true,
-                           format: { with: VALID_PHONE_NUMBER_REGEX },
-                           uniqueness: true
+  # VALID_PHONE_NUMBER_REGEX = /\A(\+84|0)+(3[2-9]|5[6|8|9]|9\d(?!5)|8[1-9]|7[0|6-9])+([0-9]{7})\z/
+  # validates :phone_number, presence: true,
+  #                          format: { with: VALID_PHONE_NUMBER_REGEX },
+  #                          uniqueness: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

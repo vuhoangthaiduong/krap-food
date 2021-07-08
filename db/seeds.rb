@@ -82,13 +82,15 @@ FoodGroup.create(name: "Something 4")
                         last_name: user_last_name,
                         email: email,
                         phone_number: phone_number,
-                        password: "password",
-                        password_confirmation: "password" )
+                        password: "123456",
+                        password_confirmation: "123456" )
   @restaurant = Restaurant.create!( owner_id: @user.id,
                                     name: restaurant_name,
                                     address: address[n][0],
                                     latitude: address[n][1],
-                                    longitude: address[n][2] )
+                                    longitude: address[n][2],
+                                    open_at: Time.parse("08:00"),
+                                    close_at: Time.parse("22:00") )
   (1..10).each do |m|
     food_name = Faker::Food.dish
     food = Food.create!(name: food_name,
@@ -104,7 +106,27 @@ FoodGroup.create(name: "Something 4")
   end
 end
 
+@user_ids = User.all.pluck(:id)
+
 Restaurant.all.each do |c|
   file_name = "6.png"
+  c.image.attach(io: File.open(Rails.root.join("app", "javascript", "images", file_name)), filename: file_name)
+  ratings = [3, 4 ,5]
+  (1..10).each do |m|
+    review = Review.create!(user_id: @user_ids.sample,
+                   restaurant_id: c.id,
+                   content: "Something good and bad",
+                   rating: ratings.sample)
+    # if m == 10
+    #   file_name = "thesmithburger.jpg"
+    #   review.image_1.attach(io: File.open(Rails.root.join("app", "javascript", "images", file_name)), filename: file_name)
+    #   review.image_2.attach(io: File.open(Rails.root.join("app", "javascript", "images", "login-bg.png")), filename: "login-bg.png")
+    #   review.image_3.attach(io: File.open(Rails.root.join("app", "javascript", "images", "cat.jpg")), filename: "cat.jpg")
+    # end
+  end
+end
+
+User.all.each do |c|
+  file_name = "cat.jpg"
   c.image.attach(io: File.open(Rails.root.join("app", "javascript", "images", file_name)), filename: file_name)
 end
