@@ -13,6 +13,7 @@ require("jquery-ui")
 import "../stylesheets/application.css"
 import "./customer/custom.js"
 import "./customer/order_online"
+import "./custom.js"
 
 const images = require.context('../images', true)
 

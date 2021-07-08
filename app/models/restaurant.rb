@@ -10,6 +10,7 @@ class Restaurant < ApplicationRecord
   has_many :vouchers
   has_many :restaurant_rating_users
   has_many :notifications
+  has_many :reviews
 
   validates :name, presence: true
   validates :address, presence: true

@@ -14,6 +14,7 @@ import "./business/settings.js"
 import "./business/framework.js"
 import "./business/restaurant_chooser.js"
 import "./business/replace_preview_image.js"
+import "./business/food_image_review.js"
 import "../stylesheets/business.css"
 require("jquery-datetimepicker")
 

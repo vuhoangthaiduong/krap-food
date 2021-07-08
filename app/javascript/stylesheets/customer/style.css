@@ -1492,4 +1492,32 @@ p{
  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
     border-radius: 50%;
   }
-  
+  .rating-css {
+  height: 100px;
+  width: 400px;
+}
+.rating-css div {
+  color: #ff3008;
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: 800;
+  text-align: left;
+  text-transform: uppercase;
+  padding: 20px 0;
+}
+.rating-css input {
+  display: none;
+}
+.rating-css input + label {
+  font-size: 15px;
+  text-shadow: none;
+  cursor: pointer;
+}
+.rating-css input:checked + label ~ label {
+  color: #838383;
+}
+.rating-css label:active {
+  transform: scale(0.8);
+  transition: 0.3s ease;
+}
+

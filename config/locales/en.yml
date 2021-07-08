@@ -13,6 +13,22 @@ en:
         languages: Languages
         your_restaurant: Your restaurant
         register_restaurant: Register Restaurant
+    restaurants:
+      show:
+        order_online: Oder Online
+        gallery: Gallery
+        restaurant_info: Restaurant Info
+        ratings_reviews: Ratings & Reviews
+        ratings: Ratings
+        reviews: Reviews
+      reviews:
+        ratings_reviews: Ratings and Reviews
+        rated: Rated %{num} out of 5
+        leave_comment: Leave Comment
+        rate: Rate the Place
+        comment: Your comment
+        submit: Submit Comment
+        all_ratings_reviews: All Ratings and Reviews
     static_pages:
       home:
         find_some_deal: Find Awesome Deals in Hanoi
@@ -55,6 +71,7 @@ en:
       entities:
         foods: "Foods"
         promos: "Promos"
+        reviews: "Customer Review"
       foods:
         shared:
           menu: "Menu"
